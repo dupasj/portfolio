@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body{
+  position: absolute;
+  left:0;
+  top:0;
+  width: 100%;
+}
+
+body{
+  height:auto;
+  min-height: 100%;
+  padding-bottom: 100px;
+}
+
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+html.has-scroll-dragging,
+html.has-scroll-dragging * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100vh;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0;
+}
+.c-scrollbar:hover {
+  transform: scaleX(1.45) !important;
+}
+.c-scrollbar:hover,
+.has-scroll-dragging .c-scrollbar,
+.has-scroll-scrolling .c-scrollbar {
+  opacity: 1;
+}
+.has-scroll-dragging .c-scrollbar,
+.has-scroll-scrolling .c-scrollbar {
+  opacity: 1;
+  transform: translate3d(-20%,0,0);
+}
+
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  z-index: 150;
+
+  width: 5px;
+
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab;
+
+  border-radius: 99px;
+}
+.has-scroll-dragging .c-scrollbar_thumb {
+  cursor: -webkit-grabbing;
+  cursor: grabbing;
+}
+
+
+.scroll-animation.scroll-leave-animation{
+  opacity: 0;
+  transform: translate3d(0, -5vh, 0) scale3d(1, 1.025, 1);
+}
+.scroll-animation{
+  transition: transform 0.75s cubic-bezier(0.33, 1, 0.68, 1),
+  opacity 0.75s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.scroll-animation:not(.scroll-animated){
+  opacity: 0;
+  transform: translate3d(0, 5vh, 0) scale3d(1, 1.025, 1);
+}
+
+a{
+  @apply inline-block w-auto h-auto underline
+}
+ul > li{
+  @apply h-auto text-white text-[24px] font-sans text-left;
+}
+
+p{
+  @apply text-[18px];
+  @apply md:text-[24px];
+  @apply w-full h-auto text-white md:text-[24px] font-sans text-left mb-[10px];
+}
+
+h1{
+  @apply text-[40px];
+  @apply xl:text-[50px];
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+h2{
+  @apply text-[40px];
+  @apply xl:text-[45px];
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+h3{
+  @apply text-[30px];
+  @apply xl:text-[40px];
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+h4{
+  @apply text-[27px];
+  @apply xl:text-[35px];
+
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+h5{
+  @apply text-[25px];
+  @apply xl:text-[30px];
+
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+h6{
+  @apply text-[21px];
+  @apply xl:text-[26px];
+  @apply w-full h-auto text-white font-sans text-left mb-[30px];
+}
+
+
+.rich-text{
+  @apply flex flex-col justify-center w-full h-auto
+}
+ul{
+  @apply block w-full h-auto list-disc pl-[27px];
+}
