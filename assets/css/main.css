@@ -35,6 +35,7 @@ html.has-scroll-dragging * {
   right: 0;
   top: 0;
   width: 11px;
+  z-index: 999;
   height: 100vh;
   transform-origin: center right;
   transition: transform 0.3s, opacity 0.3s;
