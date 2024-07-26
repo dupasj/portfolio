@@ -7,10 +7,10 @@
     "node": "16.x"
   },
   "scripts": {
-    "dev": "nuxt --openssl-legacy-provider",
-    "build": "nuxt build",
-    "start": "nuxt start --openssl-legacy-provider",
-    "generate": "nuxt generate"
+    "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt --openssl-legacy-provider",
+    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt  --openssl-legacy-provider build",
+    "start": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt start --openssl-legacy-provider",
+    "generate": "SET NODE_OPTIONS=--openssl-legacy-provider && nuxt  --openssl-legacy-provider generate"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
