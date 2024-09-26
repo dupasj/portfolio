@@ -76,25 +76,22 @@ export default {
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: false,
-      canvas: this.$refs.canvas,
-      powerPreference: "low-power"
+      canvas: this.$refs.canvas
     })
-    renderer.physicallyCorrectLights = true;
 
-    const pmremGenerator = new THREE.PMREMGenerator( renderer )
-    pmremGenerator.compileEquirectangularShader();
-
-
+    renderer.outputEncoding = THREE.sRGBEncoding;
 
     const scene = new THREE.Scene()
-    //scene.add(new THREE.AmbientLight(0xffffff));
-    scene.background = new THREE.Color(0xff0000);
 
     const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight)
     scene.add(camera);
 
-    const roughNormal = await loader.texture.loadAsync("/rough-normal.jpeg");
-    const clearcoatNormal = await loader.texture.loadAsync("/scratched-normal.png");
+    const clearcoatNormal = await loader.texture.loadAsync("/rough-normal.jpeg");
+    const fbm = await loader.texture.loadAsync("/fbm.png");
+
+    fbm.encoding = THREE.sRGBEncoding;
+    clearcoatNormal.encoding = THREE.sRGBEncoding;
+
 
     const background = new THREE.Mesh(
       new THREE.PlaneGeometry( 1,1,1 ),
@@ -107,136 +104,10 @@ export default {
           u_offset: new THREE.Uniform(new THREE.Vector2()),
           u_aspect: new THREE.Uniform(1),
           u_white: new THREE.Uniform(1),
+          u_fbm: new THREE.Uniform(fbm),
         },
-        vertexShader: `
-        precision mediump float;
-
-        varying vec2 vUv;
-
-        void main() {
-          vUv = uv;
-
-          gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-      `,
-        fragmentShader: `
-        precision highp float;
-
-        #define NUM_OCTAVES_HIGH 4
-
-        varying vec2 vUv;
-
-
-        uniform float u_time;
-        uniform float u_aspect;
-        uniform float u_intensity;
-        uniform float u_white;
-        uniform vec2 u_offset;
-
-        uint hash( uint x ) {
-            x += ( x << 10u );
-            x ^= ( x >>  6u );
-            x += ( x <<  3u );
-            x ^= ( x >> 11u );
-            x += ( x << 15u );
-            return x;
-        }
-
-        uint hash( uvec2 v ) { return hash( v.x ^ hash(v.y)                         ); }
-        uint hash( uvec3 v ) { return hash( v.x ^ hash(v.y) ^ hash(v.z)             ); }
-        uint hash( uvec4 v ) { return hash( v.x ^ hash(v.y) ^ hash(v.z) ^ hash(v.w) ); }
-
-        float floatConstruct( uint m ) {
-            const uint ieeeMantissa = 0x007FFFFFu; // binary32 mantissa bitmask
-            const uint ieeeOne      = 0x3F800000u; // 1.0 in IEEE binary32
-
-            m &= ieeeMantissa;                     // Keep only mantissa bits (fractional part)
-            m |= ieeeOne;                          // Add fractional part to 1.0
-
-            float  f = uintBitsToFloat( m );       // Range [1:2]
-            return f - 1.0;                        // Range [0:1]
-        }
-
-        float random( float x ) { return floatConstruct(hash(floatBitsToUint(x))); }
-        float random( vec2  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-        float random( vec3  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-        float random( vec4  v ) { return floatConstruct(hash(floatBitsToUint(v))); }
-
-        float noise (in vec2 _st) {
-            vec2 i = floor(_st);
-            vec2 f = fract(_st);
-
-            // Four corners in 2D of a tile
-            float a = random(i);
-            float b = random(i + vec2(1.0, 0.0));
-            float c = random(i + vec2(0.0, 1.0));
-            float d = random(i + vec2(1.0, 1.0));
-
-            vec2 u = f * f * (3.0 - 2.0 * f);
-
-            return mix(a, b, u.x) +
-                    (c - a)* u.y * (1.0 - u.x) +
-                    (d - b) * u.x * u.y;
-        }
-
-        float fbmHigh (vec2 x) {
-          float v = 0.0;
-          float a = 0.5;
-          vec2 shift = vec2(100);
-          mat2 rot = mat2(cos(0.5), sin(0.5), -sin(0.5), cos(0.50));
-          for (int i = 0; i < NUM_OCTAVES_HIGH; ++i) {
-            v += a * noise(x);
-            x = rot * x * 2.0 + shift;
-            a *= 0.5;
-          }
-          return v;
-        }
-
-        float fbmLow (vec2 x) {
-          float v = 0.0;
-          float a = 0.5;
-
-          v += a * noise(x);
-
-          return v;
-
-        }
-
-        void main() {
-            vec2 st = vUv;
-            st.x *= u_aspect;
-            st -= u_offset;
-            st *= 3.;
-
-            vec2 r = vec2(0.);
-            r.x = fbmLow(st + 1.0 + vec2(1.7,9.2)+ 0.15*u_time);
-            r.y = fbmHigh(st + 1.0 + vec2(8.3,2.8)+ 0.126*u_time);
-
-            float f = fbmHigh(st+r);
-
-            vec3 color = mix(vec3(33./255., 10./255., 38./255.),
-                        vec3(64./255., 11./255., 60./255.),
-                        clamp((f*f)*3.,0.0,1.0));
-
-            color = mix(
-              color,
-              vec3(0,0,0.164706),
-              clamp(length(r),0.0,1.0)
-            );
-
-            color = mix(color,
-                        vec3(21./255.,29./255.,42./255.),
-                        clamp(length(r.x),0.0,1.0));
-
-            float intensity = clamp(1. - u_offset.y,0.,1.);
-
-            gl_FragColor = mix(
-              vec4(color*u_intensity,1.),
-              vec4(1.,1.,1.,1.),
-              smoothstep(0.,1.,u_white)
-            );
-        }
-      `
+        vertexShader: require('../assets/three/shader/background/background-vertex.glsl').default,
+        fragmentShader: require('../assets/three/shader/background/background-fragment.glsl').default
       })
     );
 
@@ -267,6 +138,25 @@ export default {
       y: Math.floor(Math.random() * 3) - 1,
       z: Math.floor(Math.random() * 3) - 1,
     }
+
+    const cubeMaterial = new THREE.ShaderMaterial({
+      depthWrite: true,
+      depthTest: true,
+      uniforms: {
+        u_time: new THREE.Uniform(0),
+        u_intensity: new THREE.Uniform(0),
+        u_offset: new THREE.Uniform(new THREE.Vector2()),
+        u_aspect: new THREE.Uniform(1),
+        u_white: new THREE.Uniform(1),
+        u_fbm: new THREE.Uniform(fbm),
+        u_normal: new THREE.Uniform(clearcoatNormal),
+        u_ior: { value: 2.5 }, // Set your IOR value
+        u_thickness: { value: 1.7 }, // Set your thickness value
+      },
+      vertexShader: require('../assets/three/shader/cube/cube-vertex.glsl').default,
+      fragmentShader: require('../assets/three/shader/cube/cube-fragment.glsl').default
+    })
+
     for(let x=0;x<3;x++){
       for(let y=0;y<3;y++){
         for(let z=0;z<3;z++){
@@ -277,17 +167,7 @@ export default {
           const mesh = (() => {
             return new THREE.Mesh(
               new THREE.BoxGeometry(),
-              new THREE.MeshPhysicalMaterial({
-                normalMap: roughNormal,
-                clearcoat: 1,
-                opacity: 1,
-                transparent: true,
-                clearcoatNormalMap: clearcoatNormal,
-                roughness: 0.15,
-                transmission: 1,
-                // @ts-ignore
-                thickness: 2
-              }),
+              cubeMaterial,
             )
           })()
 
@@ -319,7 +199,7 @@ export default {
     const orientationPosition = (event) => {
       mouse.orientation.set(
         lerp(-1,1,unlerp(-45,45,event.gamma ?? 0,true)) * 2,
-        lerp(-1,1,unlerp(0,60,event.beta ?? 0,true)) * 2,
+        lerp(-1,1,unlerp(0,60,(event.beta ?? 0)*-1+80,true)) * 2,
       );
     };
 
@@ -446,6 +326,7 @@ export default {
       const fov = 2.0*Math.atan( 1.0/camera.projectionMatrix.elements[5] ) * 180.0 / Math.PI;
 
       background.material.uniforms.u_aspect.value = camera.aspect;
+      cubeMaterial.uniforms.u_aspect.value = camera.aspect;
 
       const scale = Math.tan(fov / 180 * Math.PI / 2) * Math.abs(50) * 2;
       background.scale.set(scale * aspect,scale,1);
@@ -494,6 +375,12 @@ export default {
       background.material.uniforms.u_offset.value.x = 0;
       background.material.uniforms.u_offset.value.y = this.scrollY/window.innerHeight;
       background.material.uniforms.u_white.value = lerp(1,0,clock.getElapsedTime(),true);
+
+      cubeMaterial.uniforms.u_time.value+=delta
+      cubeMaterial.uniforms.u_intensity.value = this.cube ? lerp(3,0.8,this.scrollY/window.innerHeight) : 0.8;
+      cubeMaterial.uniforms.u_offset.value.x = 0;
+      cubeMaterial.uniforms.u_offset.value.y = this.scrollY/window.innerHeight;
+      cubeMaterial.uniforms.u_white.value = lerp(1,0,clock.getElapsedTime(),true);
 
 
       if (this.cube){

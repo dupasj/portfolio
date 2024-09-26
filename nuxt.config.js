@@ -1,3 +1,6 @@
+import * as path from "path";
+import * as fs from "fs";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -110,8 +113,25 @@ export default {
         autoprefixer: {},
       },
     },
+    extend(config, ctx) {
+      config.module.rules.push({
+        test: /\.glsl$/,
+        use: [
+          {
+            loader: 'raw-loader',
+          },
+          {
+            loader: 'glslify-loader',
+          },
+        ],
+      });
+    },
   },
   server: {
+    https: {
+      key: fs.readFileSync(path.resolve(__dirname, 'localhost.key')),
+      cert: fs.readFileSync(path.resolve(__dirname, 'localhost.crt'))
+    },
     port: process.env.PORT || 3000,
     host: process.env.HOST || '0.0.0.0',
   }

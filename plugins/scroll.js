@@ -55,6 +55,7 @@ export default ({ app }, inject) => {
   }
 
   const initScroll = () => {
+    return null;
     if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
       destroyScroll();
       return null;
