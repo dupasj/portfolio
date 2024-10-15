@@ -1,20 +1,19 @@
 precision mediump float;
 
-varying vec2 vUv;
 varying vec2 vScreenUv;
 varying vec3 vNormal;
 
-uniform float u_time;
-uniform float u_aspect;
-uniform float u_intensity;
-uniform float u_white;
-uniform vec2 u_offset;
+uniform float uTime;
+uniform float uAspect;
+uniform float uIntensity;
+uniform float uWhite;
+uniform vec2 uOffset;
+uniform float uOpacity;
 
-uniform sampler2D u_fbm;
-uniform sampler2D u_normal;
+uniform sampler2D uFbm;
 
-uniform float u_ior;
-uniform float u_thickness;
+uniform float uIor;
+uniform float uThickness;
 
 vec4 applyGammaCorrection(vec4 color, float gamma) {
   return vec4(pow(color.rgb, vec3(1.0 / gamma)), color.a);
@@ -30,17 +29,17 @@ vec2 triangleWave(vec2 x) {
 float fbm (vec2 x) {
   vec2 scaledCoords = triangleWave(x/20.);
 
-  return texture2D(u_fbm, scaledCoords).r;
+  return texture2D(uFbm, scaledCoords).r;
 }
 
-vec4 diffuse(vec2 st){
-  st.x *= u_aspect;
-  st -= u_offset;
+vec4 diffuse(vec2 st,float intensity){
+  st.x *= uAspect;
+  st -= uOffset;
   st *= 3.;
 
   vec2 r = vec2(0.);
-  r.x = fbm(st + 1.0 + vec2(1.7,9.2)+ 0.15*u_time);
-  r.y = fbm(st + 1.0 + vec2(8.3,2.8)+ 0.126*u_time);
+  r.x = fbm(st + 1.0 + vec2(1.7,9.2)+ 0.15*uTime);
+  r.y = fbm(st + 1.0 + vec2(8.3,2.8)+ 0.126*uTime);
 
   float f = fbm(st+r);
 
@@ -62,19 +61,21 @@ vec4 diffuse(vec2 st){
     clamp(length(r.x),0.0,1.0)
   );
 
-  float intensity = clamp(1. - u_offset.y,0.,1.);
-
   return mix(
-    vec4(color*u_intensity*1.05,1.),
+    vec4(color*uIntensity*intensity,1.),
     vec4(1.,1.,1.,1.),
-    smoothstep(0.,1.,u_white)
+    smoothstep(0.,1.,uWhite)
   );
 }
 
 void main() {
   vec3 normal = normalize(vNormal);
-  float iorEffect = 1.0 / u_ior;
-  vec2 uvDistorted = vScreenUv + normal.xy * u_thickness * iorEffect;
+  float iorEffect = 1.0 / uIor;
+  vec2 uvDistorted = vScreenUv + normal.xy * uThickness * iorEffect;
 
-  gl_FragColor = diffuse(uvDistorted);
+  gl_FragColor = mix(
+    diffuse(vScreenUv,0.9),
+    diffuse(uvDistorted,1.05),
+    uOpacity
+  );
 }

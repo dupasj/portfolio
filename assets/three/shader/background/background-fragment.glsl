@@ -2,12 +2,12 @@ precision mediump float;
 
 varying vec2 vScreenUv;
 
-uniform float u_time;
-uniform float u_aspect;
-uniform float u_intensity;
-uniform float u_white;
-uniform vec2 u_offset;
-uniform sampler2D u_fbm;
+uniform float uTime;
+uniform float uAspect;
+uniform float uIntensity;
+uniform float uWhite;
+uniform vec2 uOffset;
+uniform sampler2D uFbm;
 
 vec2 triangleWave(vec2 x) {
   return vec2(
@@ -19,17 +19,17 @@ vec2 triangleWave(vec2 x) {
 float fbm (vec2 x) {
   vec2 scaledCoords = triangleWave(x/20.);
 
-  return texture2D(u_fbm, scaledCoords).r;
+  return texture2D(uFbm, scaledCoords).r;
 }
 
 vec4 diffuse(vec2 st){
-  st.x *= u_aspect;
-  st -= u_offset;
+  st.x *= uAspect;
+  st -= uOffset;
   st *= 3.;
 
   vec2 r = vec2(0.);
-  r.x = fbm(st + 1.0 + vec2(1.7,9.2)+ 0.15*u_time);
-  r.y = fbm(st + 1.0 + vec2(8.3,2.8)+ 0.126*u_time);
+  r.x = fbm(st + 1.0 + vec2(1.7,9.2)+ 0.15*uTime);
+  r.y = fbm(st + 1.0 + vec2(8.3,2.8)+ 0.126*uTime);
 
   float f = fbm(st+r);
 
@@ -51,12 +51,10 @@ vec4 diffuse(vec2 st){
   clamp(length(r.x),0.0,1.0)
   );
 
-  float intensity = clamp(1. - u_offset.y,0.,1.);
-
   return mix(
-  vec4(color*u_intensity*0.9,1.),
+  vec4(color*uIntensity*0.9,1.),
   vec4(1.,1.,1.,1.),
-  smoothstep(0.,1.,u_white)
+  smoothstep(0.,1.,uWhite)
   );
 }
 

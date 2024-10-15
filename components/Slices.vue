@@ -1,22 +1,14 @@
 <template>
-  <div class="w-full">
-    <ItemSlice :slice="item" v-for="item of slices"/>
-  </div>
+  <ItemSlice :slice="item" v-for="item of slices"/>
 </template>
-<script>
+<script setup>
 
-import ItemSlice from "~/components/slice/ItemSlice.vue";
+import ItemSlice from "./SliceItem.vue"
 
-export default {
-  name: 'Slices',
-  components: {
-    ItemSlice
+const props = defineProps({
+  slices: {
+    type: Array,
+    required: true,
   },
-  props: {
-    slices: {
-      required: true,
-      type: Array
-    }
-  }
-};
+});
 </script>

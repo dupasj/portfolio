@@ -1,0 +1,3 @@
+const SPRING_DEFAULT_MASS = 1;
+
+export default SPRING_DEFAULT_MASS;

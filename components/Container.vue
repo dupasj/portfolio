@@ -1,35 +1,40 @@
 <template>
-  <div class="w-full h-auto" :class="{'mt-[70px] mb-[70px]': margin,'fill-with-margin': screen && margin && !container,'min-h-[100vh]': screen && !margin && !container,'pl-[15px] pr-[15px]': padding && !container}">
-    <div v-if="container" class="container" :class="{'fill-with-margin': screen && margin,'min-h-[100vh]': screen && !margin,'pl-[15px] pr-[15px]': padding}">
+  <div class="w-full h-auto" :class="{'mt-[100px] mb-[100px]': props.margin,'fill-with-margin': props.screen && props.margin && !props.container,'min-h-[100vh]': props.screen && !props.margin && !props.container,'pl-[15px] pr-[15px]': props.padding && !props.container}">
+    <div v-if="props.section" class="xl:container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
+      <slot/>
+    </div>
+    <div v-else-if="props.container" class="container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
       <slot/>
     </div>
     <slot v-else/>
   </div>
 </template>
-<script>
-export default {
-  name: "Container",
-  props: {
-    container: {
-      type: Boolean,
-      default: true
-    },
-    margin: {
-      type: Boolean,
-      default: true
-    },
-    screen: {
-      type: Boolean,
-      default: true
-    },
-    padding: {
-      type: Boolean,
-      default: true
-    }
+<script setup>
+
+const props = defineProps({
+  container: {
+    type: Boolean,
+    default: true
+  },
+  section: {
+    type: Boolean,
+    default: false
+  },
+  margin: {
+    type: Boolean,
+    default: true
+  },
+  screen: {
+    type: Boolean,
+    default: true
+  },
+  padding: {
+    type: Boolean,
+    default: true
   }
-}
+})
 </script>
-<style scoped>
+<style>
 .fill-with-margin{
   min-height: calc(100vh - 140px);
 }

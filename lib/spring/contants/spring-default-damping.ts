@@ -1,0 +1,3 @@
+const SPRING_DEFAULT_DAMPING = 10;
+
+export default SPRING_DEFAULT_DAMPING;

@@ -1,69 +1,69 @@
 <template>
-  <Slices v-if="data !== null" :slices="data.data.body"/>
+  <Background :cube="true">
+    <Slices v-if="data" :slices="data.data.body"/>
+  </Background>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import Slices from "~/components/Slices.vue";
-import ScrollTransition from "~/components/transition/ScrollTransition";
-import ContactMeSlice from "~/components/slice/ContactMeSlice.vue";
+<script setup>
+import { useHead } from '@unhead/vue';
+import { useI18n } from 'vue-i18n';
+import { useNuxtApp } from '#app';
+import Background from '../components/Background.vue';
+const { $prismic } = useNuxtApp();
+const { locale } = useI18n();
 
-export default Vue.extend({
-  name: 'IndexPage',
-  components:{
-    Slices,
-    ContactMeSlice,
-  },
-  data(){
-    return {
-      data: null,
-    }
-  },
-  fetchOnServer: true,
-  async fetch(){
-    try{
-      const lang = {
-        fr: "fr-fr",
-        en: "en-eu",
-      }[this.$i18n.locale];
+const { data, error } = await useSinglePrismicDocument('homepage', {
+  lang: {
+    fr: "fr-fr",
+    en: "en-eu",
+  }[locale.value]
+});
 
-      this.data = await this.$prismic.api.getSingle('homepage',{ lang: lang });
 
-      this.$nuxt.$emit('language',this.data.alternate_languages)
-    }catch (e){
-      console.log(e);
-      return this.$nuxt.error({ statusCode: 500, message: "Internal Server Error" })
-    }
-  },
-  mounted() {
-    if (this.data){
-      this.$nuxt.$emit('language',this.data.alternate_languages)
-    }
-  },
-  head(){
-    if (this.data === null){
-      return this.$nuxtI18nHead({ addSeoAttributes: true });
-    }
+onMounted(() => {
+  if (data.value) {
+    // this.$nuxt.$emit('language',this.data.alternate_languages)
+  }
 
-    const base = this.$nuxtI18nHead({ addSeoAttributes: true });
-    return {
-      title: this.$prismic.asText(this.data.data.seo_title),
+  if (process.client){
+    const ready = () => {
+      if (document.readyState !== "complete"){
+        return;
+      }
+
+      document.removeEventListener("readystatechange",ready);
+    };
+    document.addEventListener("readystatechange",ready);
+    ready();
+  }
+});
+
+watchEffect(() => {
+  if (data.value === null) {
+    // Default SEO for untranslated content
+    useHead({
+      title: 'Default Title',
       meta: [
-        ... base.meta,
+        { hid: 'description', name: 'description', content: 'Default Description' },
+      ],
+    });
+  } else {
+    // SEO for Prismic content
+    useHead({
+      title: $prismic.asText(data.value.data.seo_title),
+      meta: [
         {
           hid: 'description',
           name: 'description',
-          content: this.$prismic.asText(this.data.data.description)
+          content: $prismic.asText(data.value.data.description),
         },
         {
           hid: 'keywords',
           name: 'keywords',
-          content: this.data.data.tags
-        }
-      ]
-    }
-  },
-  scrollToTop: true,
-  transition: ScrollTransition
-})
+          content: data.value.data.tags,
+        },
+      ],
+    });
+  }
+});
 </script>
