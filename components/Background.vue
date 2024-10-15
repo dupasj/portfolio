@@ -1,449 +1,501 @@
 <template>
-  <div class="absolute left-0 top-0 w-full">
-    <canvas style="height:calc(100vh + 200px)" class="fixed w-full left-0 top-0 z-[-1]" ref="canvas"></canvas>
+  <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasEL"></canvas>
+  <div class="w-full pt-[100vh]" v-if="props.cube">
     <slot/>
-    <div :style="{opacity: lottieVisible}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottie"></div>
   </div>
-
+  <slot v-else/>
+  <div :style="{opacity: true}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottieEL"></div>
+  <nav class="fixed left-0 top-0 w-full h-[120px] flex justify-center align-center z-[100]">
+    <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasNavEL"></canvas>
+    <ul class="container justify-between content-center flex space-x-[15px]">
+      <li class="flex">
+        <NuxtLink :to="{ name: `index___${locale}` }" class="flex content-center justify-center justify-items-center items-center space-x-[3px] text-white p-[7px] subpixel-antialiased"><span class="scroll-animation rounded-full px-[10px] py-[3px] bg-[#FF0058] inline-block font-sans text-[16px]">Jérémie</span><span class="scroll-animation inline-block font-sans text-[16px]">Dupas_></span></NuxtLink>
+      </li>
+      <li class="inline-block">
+        <span class="inline-block text-white p-[7px] subpixel-antialiased font-sans text-[18px]">FR</span>
+      </li>
+    </ul>
+  </nav>
 </template>
 
-<script>
-import Animation from "~/lib/animation";
-import lerp from "~/lib/lerp";
-import unlerp from "~/lib/lerp/unlerp";
+<script setup>
+import lerp from "~/lib/util/lerp";
+import unlerp from "~/lib/util/lerp/unlerp";
 import * as d3 from "d3-ease";
 import * as THREE from 'three';
-import {RGBELoader} from "three/examples/jsm/loaders/RGBELoader";
-import {ObjectLoader} from "three";
+import {ref, watch} from "vue";
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import Spring from "~/lib/spring/spring.ts";
+import {useI18n} from "vue-i18n";
 import lottie from 'lottie-web'
 
-const unproject = (pos, camera) => {
-  const position = pos.clone()
-  position.unproject(camera)
-  position.sub(camera.position).normalize()
 
-  const distance = (pos.z - camera.position.z) / position.z
+const { locale } = useI18n();
 
-  return camera.position.clone().add(position.multiplyScalar(distance))
+const lottieEL = ref(null);
+const canvasEL = ref(null);
+const canvasNavEL = ref(null);
+
+
+
+watch(lottieEL,async () => {
+  const el = lottieEL.value;
+  if (!el){
+    return
+  }
+  lottie.loadAnimation({
+    container: lottieEL.value,
+    renderer: 'svg',
+    loop: true,
+    autoplay: true,
+    animationData: (await import('../assets/lottie/scroll.json')).default,
+  })
+})
+
+const props = defineProps({
+  cube: {
+    type: Boolean,
+    required: true,
+  },
+});
+
+const spring = {
+  point: {
+    stiffness: 30,
+    damping: 5,
+    mass: 1,
+  },
+  spacing: {
+    stiffness: 300,
+    damping: 15,
+    mass: 1,
+  },
+  mouse: {
+    stiffness: 70,
+    damping: 7,
+    mass: 1,
+  },
+  scroll: {
+    stiffness: 120,
+    damping: 60,
+    mass: 1,
+  }
 }
 
+onMounted( async () => {
+  if (!process.client){
+    return
+  }
 
-export default {
-  name: 'Background',
-  components: {
-  },
-  props: {
-    cube: {
-      type: Boolean,
-      default: false,
-    }
-  },
-  data(){
-    return {
-      scrollY: 0,
-      orientation: new THREE.Vector2()
-    }
-  },
-  computed: {
-    lottieVisible(){
-      if (this.$isServer){
-        return 0;
-      }
-      return this.cube ? 1 - unlerp(0,0.5,this.scrollY/window.innerHeight) : 0;
-    }
-  },
-  async mounted() {
-    if (this.$isServer){
-      return
-    }
+  const loader = {
+    texture: new THREE.TextureLoader(),
+  };
 
-    lottie.loadAnimation({
-      container: this.$refs.lottie,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      animationData: require('../lottie/scroll.json'),
-    })
+  const scene = new THREE.Scene()
+  scene.background = new THREE.Color(0xffffff);
 
-    this.$locomotive.onUpdate(this.scroll);
+  const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight)
 
-    const loader = {
-      rgbe: new RGBELoader(),
-      object: new ObjectLoader(),
-      texture: new THREE.TextureLoader(),
-    };
-
-    const renderer = new THREE.WebGLRenderer({
+  const renderer = {
+    background: new THREE.WebGLRenderer({
       antialias: true,
       alpha: false,
-      canvas: this.$refs.canvas
-    })
+      canvas: canvasEL.value,
+      powerPreference: "low-power"
+    }),
+    nav: new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      canvas: canvasNavEL.value,
+      powerPreference: "low-power"
+    }),
+  }
+  const composer = new EffectComposer(renderer.nav);
+  const renderPass = new RenderPass(scene, camera);
+  composer.addPass(renderPass);
 
-    renderer.outputEncoding = THREE.sRGBEncoding;
+  const gradientPass = new ShaderPass(new THREE.ShaderMaterial({
+    depthWrite: true,
+    depthTest: true,
+    uniforms: {
+      tDiffuse: { value: null },
+      uResolution: new THREE.Uniform(new THREE.Vector2()),
+      uFrom: new THREE.Uniform(80),
+      uTo: new THREE.Uniform(120),
+    },
+    vertexShader: (await import('../assets/three/shader/gradient/gradient-vertex.glsl?raw')).default,
+    fragmentShader: (await import('../assets/three/shader/gradient/gradient-fragment.glsl?raw')).default
+  }));
+  composer.addPass(gradientPass);
 
-    const scene = new THREE.Scene()
-
-    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight)
-    scene.add(camera);
-
-    const clearcoatNormal = await loader.texture.loadAsync("/rough-normal.jpeg");
-    const fbm = await loader.texture.loadAsync("/fbm.png");
-
-    fbm.encoding = THREE.sRGBEncoding;
-    clearcoatNormal.encoding = THREE.sRGBEncoding;
 
 
-    const background = new THREE.Mesh(
+
+  scene.add(camera);
+
+  const unproject = (pos, camera) => {
+    const position = pos.clone()
+    position.unproject(camera)
+    position.sub(camera.position).normalize()
+
+    const distance = (pos.z - camera.position.z) / position.z
+
+    return camera.position.clone().add(position.multiplyScalar(distance))
+  }
+
+
+
+
+
+
+  const fbm = await loader.texture.loadAsync((await import("../assets/three/fbm.png")).default);
+  const background = new THREE.Mesh(
       new THREE.PlaneGeometry( 1,1,1 ),
       new THREE.ShaderMaterial({
         depthWrite: true,
         depthTest: true,
         uniforms: {
-          u_time: new THREE.Uniform(0),
-          u_intensity: new THREE.Uniform(0),
-          u_offset: new THREE.Uniform(new THREE.Vector2()),
-          u_aspect: new THREE.Uniform(1),
-          u_white: new THREE.Uniform(1),
-          u_fbm: new THREE.Uniform(fbm),
+          uTime: new THREE.Uniform(0),
+          uIntensity: new THREE.Uniform(0),
+          uOffset: new THREE.Uniform(new THREE.Vector2()),
+          uAspect: new THREE.Uniform(1),
+          uWhite: new THREE.Uniform(1),
+          uFbm: new THREE.Uniform(fbm),
         },
-        vertexShader: require('../assets/three/shader/background/background-vertex.glsl').default,
-        fragmentShader: require('../assets/three/shader/background/background-fragment.glsl').default
+        vertexShader: (await import('../assets/three/shader/background/background-vertex.glsl?raw')).default,
+        fragmentShader: (await import('../assets/three/shader/background/background-fragment.glsl?raw')).default
       })
-    );
+  );
 
-    background.position.set(0,0,-50);
-    camera.add(background)
+  background.position.set(0,0,-100);
+  camera.add(background)
 
 
-    const mouse = {
-      orientation: new THREE.Vector2(),
-      position: new THREE.Vector2(),
-      force: new THREE.Vector2(),
-      value: new THREE.Vector2(),
-    }
-    const spacing = {
-      position: 1.1,
-      force: 0,
-      value: 1.1,
-    }
+  const group = new THREE.Group();
+  group.position.set(0,0,-50);
+  camera.add(group);
 
-    const points = [];
+  const points = [];
+  const mouse = {
+    x: new Spring(spring.mouse.stiffness,spring.mouse.damping,spring.mouse.mass),
+    y: new Spring(spring.mouse.stiffness,spring.mouse.damping,spring.mouse.mass),
+  }
+  const spacing = new Spring(spring.spacing.stiffness,spring.spacing.damping,spring.spacing.mass)
+  spacing.freezeTo(1.1)
 
-    const group = new THREE.Group();
-    group.position.set(0,0,-50);
-    camera.add(group);
 
-    const free = {
-      x: Math.floor(Math.random() * 3) - 1,
-      y: Math.floor(Math.random() * 3) - 1,
-      z: Math.floor(Math.random() * 3) - 1,
-    }
+  const scroll = new Spring(spring.scroll.stiffness,spring.scroll.damping,spring.scroll.mass)
+  scroll.freezeTo(window.scrollY)
 
-    const cubeMaterial = new THREE.ShaderMaterial({
-      depthWrite: true,
-      depthTest: true,
-      uniforms: {
-        u_time: new THREE.Uniform(0),
-        u_intensity: new THREE.Uniform(0),
-        u_offset: new THREE.Uniform(new THREE.Vector2()),
-        u_aspect: new THREE.Uniform(1),
-        u_white: new THREE.Uniform(1),
-        u_fbm: new THREE.Uniform(fbm),
-        u_normal: new THREE.Uniform(clearcoatNormal),
-        u_ior: { value: 2.5 }, // Set your IOR value
-        u_thickness: { value: 1.7 }, // Set your thickness value
-      },
-      vertexShader: require('../assets/three/shader/cube/cube-vertex.glsl').default,
-      fragmentShader: require('../assets/three/shader/cube/cube-fragment.glsl').default
-    })
 
-    for(let x=0;x<3;x++){
-      for(let y=0;y<3;y++){
-        for(let z=0;z<3;z++){
-          if (free.x === x-1 && free.y === y-1 && free.z === z-1){
-            continue;
-          }
+  const mousePosition = (evt) => {
+    mouse.x.springTo(evt.clientX/window.innerWidth * 2 - 1);
+    mouse.y.springTo(evt.clientY/window.innerHeight * -2 + 1);
+  };
+  const orientationPosition = (event) => {
+    mouse.x.springTo(lerp(-1,1,unlerp(-45,45,event.gamma ?? 0,true)) * 2);
+    mouse.y.springTo(lerp(-1,1,unlerp(0,60,event.beta ?? 0,true)) * 2);
+  };
 
-          const mesh = (() => {
-            return new THREE.Mesh(
-              new THREE.BoxGeometry(),
-              cubeMaterial,
-            )
-          })()
 
-          group.add(mesh);
+  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.addEventListener("deviceorientation",orientationPosition);
+  }else{
+    window.addEventListener("mousemove",mousePosition);
+  }
 
-          points.push({
-            grid: {
-              x: x - 1,
-              y: y - 1,
-              z: z - 1,
-            },
-            position: {
-              x: x - 1,
-              y: y - 1,
-              z: z - 1,
-            },
-            group: mesh,
-          });
+  window.addEventListener("mousedown",() => {
+    spacing.springTo(3)
+  });
+  window.addEventListener("mouseleave",() => {
+    spacing.springTo(1.1)
+  });
+  window.addEventListener("mouseup",() => {
+    spacing.springTo(1.1)
+  });
+
+
+  const free = {
+    x: Math.floor(Math.random() * 3) - 1,
+    y: Math.floor(Math.random() * 3) - 1,
+    z: Math.floor(Math.random() * 3) - 1,
+  }
+
+  const cubeMaterial = new THREE.ShaderMaterial({
+    depthWrite: true,
+    depthTest: true,
+    uniforms: {
+      uTime: new THREE.Uniform(0),
+      uIntensity: new THREE.Uniform(0),
+      uOpacity: new THREE.Uniform(1),
+      uOffset: new THREE.Uniform(new THREE.Vector2()),
+      uAspect: new THREE.Uniform(1),
+      uWhite: new THREE.Uniform(1),
+      uFbm: new THREE.Uniform(fbm),
+      uIor: { value: 1 },
+      uThickness: { value: 0.2 },
+    },
+    vertexShader: (await import('../assets/three/shader/cube/cube-vertex.glsl?raw')).default,
+    fragmentShader: (await import('../assets/three/shader/cube/cube-fragment.glsl?raw')).default
+  })
+
+  for(let x=0;x<3;x++){
+    for(let y=0;y<3;y++){
+      for(let z=0;z<3;z++){
+        if (free.x === x-1 && free.y === y-1 && free.z === z-1){
+          continue;
         }
+
+        const mesh = (() => {
+          return new THREE.Mesh(
+              new THREE.BoxGeometry(),
+              cubeMaterial
+          )
+        })()
+
+        group.add(mesh);
+
+        const point = {
+          animation: {
+            x: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
+            y: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
+            z: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
+          },
+          group: mesh,
+        };
+        point.animation.x.freezeTo(x-1)
+        point.animation.y.freezeTo(y-1)
+        point.animation.z.freezeTo(z-1)
+
+        points.push(point);
       }
     }
-
-    const mousePosition = (evt) => {
-      mouse.position.set(
-        evt.clientX/window.innerWidth * 2 - 1,
-        evt.clientY/window.innerHeight * -2 + 1,
-      )
-    };
-    const orientationPosition = (event) => {
-      mouse.orientation.set(
-        lerp(-1,1,unlerp(-45,45,event.gamma ?? 0,true)) * 2,
-        lerp(-1,1,unlerp(0,60,(event.beta ?? 0)*-1+80,true)) * 2,
-      );
-    };
+  }
 
 
-    const movePoint = () => {
-      const choices = [
-        {
-          x: free.x - 1,
-          y: free.y,
-          z: free.z,
-        },
-        {
-          x: free.x + 1,
-          y: free.y,
-          z: free.z,
-        },
-        {
-          x: free.x,
-          y: free.y - 1,
-          z: free.z,
-        },
-        {
-          x: free.x,
-          y: free.y + 1,
-          z: free.z,
-        },
-        {
-          x: free.x,
-          y: free.y,
-          z: free.z - 1,
-        },
-        {
-          x: free.x,
-          y: free.y,
-          z: free.z + 1,
-        }
-      ].filter((item) => {
-        return item.x >= -1 && item.x <= 1
+
+
+
+
+
+  const resize = () => {
+    const w = window.innerWidth;
+    const h = window.innerHeight + 10;
+
+    renderer.background.setSize(w,h,false)
+    renderer.nav.setSize(w,h,false)
+
+    renderer.nav.setScissorTest(true);
+    renderer.nav.setScissor(0, h - 120, w, 120);
+    renderer.nav.setViewport(0, h - 120, w, 120);
+
+
+    renderer.background.setPixelRatio(1);
+    renderer.nav.setPixelRatio(1);
+
+    camera.aspect = w/h
+    camera.updateProjectionMatrix()
+
+    composer.setSize(w,h);
+    composer.setPixelRatio(1);
+    gradientPass.uniforms.uResolution.value.set(w,h);
+
+
+
+    const fov = 2.0*Math.atan( 1.0/camera.projectionMatrix.elements[5] ) * 180.0 / Math.PI;
+
+    background.material.uniforms.uAspect.value = camera.aspect;
+    cubeMaterial.uniforms.uAspect.value = camera.aspect;
+
+    const scale = Math.tan(fov / 180 * Math.PI / 2) * Math.abs(100) * 2;
+    background.scale.set(scale * camera.aspect,scale,1);
+
+    const y = lerp(-1,1,0.5 * (window.innerHeight + 10) / window.innerHeight);
+    group.position.copy(unproject(new THREE.Vector3(0,y,-15),camera))
+  };
+  resize()
+  window.addEventListener("resize",resize)
+
+
+
+  const movePoint = () => {
+    const choices = [
+      {
+        x: free.x - 1,
+        y: free.y,
+        z: free.z,
+      },
+      {
+        x: free.x + 1,
+        y: free.y,
+        z: free.z,
+      },
+      {
+        x: free.x,
+        y: free.y - 1,
+        z: free.z,
+      },
+      {
+        x: free.x,
+        y: free.y + 1,
+        z: free.z,
+      },
+      {
+        x: free.x,
+        y: free.y,
+        z: free.z - 1,
+      },
+      {
+        x: free.x,
+        y: free.y,
+        z: free.z + 1,
+      }
+    ].filter((item) => {
+      return item.x >= -1 && item.x <= 1
           && item.y >= -1 && item.y <= 1
           && item.z >= -1 && item.z <= 1
-      })
+    })
 
-      const choice = choices[Math.floor(Math.random() * choices.length)];
+    const choice = choices[Math.floor(Math.random() * choices.length)];
 
-      const item = points.find(point => {
-        return point.grid.x === choice.x
-          && point.grid.y === choice.y
-          && point.grid.z === choice.z
-      })
-      if (typeof item === "undefined"){
-        setTimeout(movePoint,Math.random() * 1500)
-        return;
-      }
-
-      const animation = new Animation();
-      animation.setDuration(200 + 700 * Math.random());
-      animation.bind((coef) => {
-        item.position.x = lerp(item.grid.x,free.x,coef);
-        item.position.y = lerp(item.grid.y,free.y,coef);
-        item.position.z = lerp(item.grid.z,free.z,coef);
-      });
-      animation.start();
-      animation.onEnd(() => {
-        for(const key in free){
-          item.grid[key] = free[key];
-        }
-        for(const key in choice){
-          free[key] = choice[key];
-        }
-
-        setTimeout(movePoint,Math.random() * 1500)
-      })
-    };
-    movePoint();
-    window.addEventListener("mousemove",mousePosition);
-
-    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      window.addEventListener("deviceorientation",orientationPosition);
+    const point = points.find(point => {
+      return point.animation.x.getTarget() === choice.x
+          && point.animation.y.getTarget() === choice.y
+          && point.animation.z.getTarget() === choice.z
+    })
+    if (typeof point === "undefined"){
+      setTimeout(movePoint,Math.random() * 1500)
+      return;
     }
 
-    window.addEventListener("mousedown",() => {
-      spacing.position = 3;
-    });
-    window.addEventListener("mouseleave",() => {
-      spacing.position = 1.1;
-    });
-    window.addEventListener("mouseup",() => {
-      spacing.position = 1.1;
-    });
+    const __copy = {
+      x: free.x,
+      y: free.y,
+      z: free.z,
+    }
 
-    window.addEventListener("touchstart",() => {
-      const coef = this.scrollY/window.innerHeight;
+    free.x = point.animation.x.getTarget();
+    free.y = point.animation.y.getTarget();
+    free.z = point.animation.z.getTarget();
 
-      spacing.position = coef > 0.5 ? 1.1 : 3;
-    });
-    window.addEventListener("touchmove",() => {
-      const coef = this.scrollY/window.innerHeight;
+    point.animation.x.springTo(__copy.x);
+    point.animation.y.springTo(__copy.y);
+    point.animation.z.springTo(__copy.z);
 
-      spacing.position = coef > 0.5 ? 1.1 : 3;
-    });
-    window.addEventListener("touchend",(e) => {
-      if (e.touches.length > 0){
-        return;
-      }
-      spacing.position = 1.1;
-    });
-    window.addEventListener("touchcancel",(e) => {
-      if (e.touches.length > 0){
-        return;
-      }
-      spacing.position = 1.1;
-    });
+    setTimeout(movePoint,Math.random() * 1500 + 200)
+  };
+  movePoint();
 
 
-    const resize = () => {
-      renderer.setSize(Math.min(1024,window.innerWidth),Math.min(1024,window.innerHeight + 200),false)
-      renderer.setPixelRatio(1);
-
-      camera.aspect = window.innerWidth/(window.innerHeight + 200)
-      camera.updateProjectionMatrix()
-
-      const aspect = camera.aspect;
-
-      const fov = 2.0*Math.atan( 1.0/camera.projectionMatrix.elements[5] ) * 180.0 / Math.PI;
-
-      background.material.uniforms.u_aspect.value = camera.aspect;
-      cubeMaterial.uniforms.u_aspect.value = camera.aspect;
-
-      const scale = Math.tan(fov / 180 * Math.PI / 2) * Math.abs(50) * 2;
-      background.scale.set(scale * aspect,scale,1);
-
-      const y = lerp(-1,1,0.5 * (window.innerHeight + 200) / window.innerHeight);
-      group.position.copy(unproject(new THREE.Vector3(0,y,-15),camera))
-    };
-    resize()
-    window.addEventListener("resize",resize)
-
-    const clock = new THREE.Clock();
 
 
-    const update = () => {
-      // @ts-ignore
-      if (this._isDestroyed){
-        window.removeEventListener("resize",resize)
-        window.removeEventListener("click",mousePosition);
-        return;
-      }
+  const clock = new THREE.Clock()
 
-      {
-        const force = mouse.position.clone().add(mouse.orientation).sub(mouse.value);
-        const distance = force.length();
-        force.normalize();
 
-        mouse.value.add(force.multiplyScalar(distance * 0.1));
-      }
-      {
-        const force = spacing.position - spacing.value;
 
-        spacing.value += force * 0.3;
-      }
+  const update = () => {
+    const delta = clock.getDelta();
 
-      const delta = clock.getDelta()
 
+    scroll.springTo(window.scrollY);
+    scroll.tick(delta);
+
+    const __scroll = scroll.getPosition()
+
+    background.material.uniforms.uTime.value+=delta
+
+
+    background.material.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
+    background.material.uniforms.uOffset.value.x = 0;
+    background.material.uniforms.uOffset.value.y = __scroll/window.innerHeight;
+    background.material.uniforms.uWhite.value = lerp(1,0,clock.getElapsedTime(),true);
+
+
+
+    if (props.cube){
       group.rotateY(delta * Math.PI * 0.1)
       group.rotateX(delta * Math.PI * 0.01)
       group.rotateZ(delta * Math.PI * 0.04)
 
       const invert = group.quaternion.clone().invert();
 
-      background.material.uniforms.u_time.value+=delta
+      cubeMaterial.uniforms.uTime.value+=delta
+      cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
+      cubeMaterial.uniforms.uOffset.value.x = 0;
+      cubeMaterial.uniforms.uOffset.value.y = __scroll/window.innerHeight;
+      cubeMaterial.uniforms.uWhite.value = lerp(1,0,clock.getElapsedTime(),true);
 
-      background.material.uniforms.u_intensity.value = this.cube ? lerp(3,0.8,this.scrollY/window.innerHeight) : 0.8;
-      background.material.uniforms.u_offset.value.x = 0;
-      background.material.uniforms.u_offset.value.y = this.scrollY/window.innerHeight;
-      background.material.uniforms.u_white.value = lerp(1,0,clock.getElapsedTime(),true);
+      mouse.x.tick(delta);
+      mouse.y.tick(delta);
+      const __mouse = {
+        x: mouse.x.getPosition(),
+        y: mouse.y.getPosition(),
+      };
 
-      cubeMaterial.uniforms.u_time.value+=delta
-      cubeMaterial.uniforms.u_intensity.value = this.cube ? lerp(3,0.8,this.scrollY/window.innerHeight) : 0.8;
-      cubeMaterial.uniforms.u_offset.value.x = 0;
-      cubeMaterial.uniforms.u_offset.value.y = this.scrollY/window.innerHeight;
-      cubeMaterial.uniforms.u_white.value = lerp(1,0,clock.getElapsedTime(),true);
-
-
-      if (this.cube){
-        const scroll = Math.min(this.scrollY/window.innerHeight * 2,1);
-        const direction = new THREE.Vector3(
-          mouse.value.x,
-          mouse.value.y,
+      const scroll = Math.min(__scroll/window.innerHeight * 2,1);
+      const direction = new THREE.Vector3(
+          __mouse.x,
+          __mouse.y,
           0
+      );
+      const up = new THREE.Vector3(0,1,0)
+      up.applyQuaternion(invert)
+      direction.applyQuaternion(invert)
+
+
+
+      spacing.tick(delta);
+      const __spacing = spacing.getPosition()
+
+      for(let i=0;i<points.length;i++){
+        const point = points[i];
+
+        const delay = ((clock.getElapsedTime() - 0.1) * 1000) - (points.length - i) * 20;
+        const appear = d3.easeQuadOut(unlerp(0,1200,delay,true));
+        const ratio = (cube_position,position) => {
+          return position * (Math.abs(position - cube_position * -1));
+        };
+
+        const delayed_scroll = d3.easeQuadIn(i / points.length * scroll + scroll);
+
+
+        point.animation.x.tick(delta);
+        point.animation.y.tick(delta);
+        point.animation.z.tick(delta);
+
+        const position = {
+          x: point.animation.x.getPosition(),
+          y: point.animation.y.getPosition(),
+          z: point.animation.z.getPosition(),
+        };
+
+        point.group.position.set(
+            position.x * __spacing + ratio(position.x,direction.x) * 0.4 + up.x * (1 - appear) * -7 + up.x * delayed_scroll * 7,
+            position.y * __spacing + ratio(position.y,direction.y) * 0.4 + up.y * (1 - appear) * -7 + up.y * delayed_scroll * 7,
+            position.z * __spacing + ratio(position.z,direction.z) * 0.4 + up.z * (1 - appear) * -7 + up.z * delayed_scroll * 7
         );
-        const up = new THREE.Vector3(0,1,0)
-        up.applyQuaternion(invert)
-        direction.applyQuaternion(invert)
-
-
-
-
-
-        for(let i=0;i<points.length;i++){
-          const point = points[i];
-
-          const delay = ((clock.getElapsedTime() - 0.1) * 1000) - (points.length - i) * 20;
-          const appear = d3.easeQuadOut(unlerp(0,1200,delay,true));
-          const ratio = (cube_position,position) => {
-            return position * (Math.abs(position - cube_position * -1));
-          };
-
-          const delayed_scroll = d3.easeQuadIn(i / points.length * scroll + scroll);
-
-          point.group.position.set(
-            point.position.x * spacing.value + ratio(point.position.x,direction.x) * 0.4 + up.x * (1 - appear) * -7 + up.x * delayed_scroll * 7,
-            point.position.y * spacing.value + ratio(point.position.y,direction.y) * 0.4 + up.y * (1 - appear) * -7 + up.y * delayed_scroll * 7,
-            point.position.z * spacing.value + ratio(point.position.z,direction.z) * 0.4 + up.z * (1 - appear) * -7 + up.z * delayed_scroll * 7
-          );
-          point.group.traverse((node) => {
-            if (node.isMesh){
-              node.material.opacity = appear * (1 - delayed_scroll);
-            }
-          });
-        }
+        cubeMaterial.uniforms.uOpacity.value = lerp(0,1,appear * (1 - delayed_scroll),true);
       }
-      group.visible = this.cube;
-
-
-      renderer.render(scene,camera);
-      this.$emit("tick",renderer);
-
-      requestAnimationFrame(update);
     }
-    const ready = () => {
-      if (document.readyState !== "complete"){
-        return;
-      }
+    group.visible = props.cube;
 
-      document.removeEventListener("readystatechange",ready);
-      update();
-    };
-    document.addEventListener("readystatechange",ready);
-    ready();
-  },
-  methods: {
-    scroll(evt){
-      this.scrollY = evt.y;
-    }
+    renderer.background.render(scene,camera);
+    composer.render(delta);
+
+    requestAnimationFrame(update);
   }
-}
+
+  const ready = () => {
+    if (document.readyState !== "complete"){
+      return;
+    }
+
+    document.removeEventListener("readystatechange",ready);
+    update();
+  };
+  document.addEventListener("readystatechange",ready);
+  ready();
+});
 </script>
