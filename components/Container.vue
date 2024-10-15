@@ -1,9 +1,9 @@
 <template>
-  <div class="w-full h-auto" :class="{'mt-[100px] mb-[100px]': props.margin,'fill-with-margin': props.screen && props.margin && !props.container,'min-h-[100vh]': props.screen && !props.margin && !props.container,'pl-[15px] pr-[15px]': props.padding && !props.container}">
-    <div v-if="props.section" class="xl:container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
+  <div class="w-full h-auto" :class="{'mt-[100px] mb-[100px]': props.margin,'fill-with-margin pt-[160px]': props.screen && !props.section && !props.container && props.margin,'pt-[160px]': props.screen && !props.section && !props.container,'min-h-[100vh]': props.screen && !props.section && !props.container && !props.margin,'pl-[15px] pr-[15px]': props.padding && !props.container}">
+    <div v-if="props.section" class="xl:container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'pt-[160px]': props.screen,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
       <slot/>
     </div>
-    <div v-else-if="props.container" class="container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
+    <div v-else-if="props.container" class="container flex-col flex justify-items-center items-center justify-center align-center content-center" :class="{'fill-with-margin': props.screen && props.margin,'pt-[160px]': props.screen,'min-h-[100vh]': props.screen && !props.margin,'pl-[15px] pr-[15px]': props.padding}">
       <slot/>
     </div>
     <slot v-else/>
