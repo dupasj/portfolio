@@ -4,7 +4,7 @@
     <slot/>
   </div>
   <slot v-else/>
-  <div :style="{opacity: true}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottieEL"></div>
+  <div :style="{opacity: lottieVisible}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottieEL"></div>
   <nav class="fixed left-0 top-0 w-full h-[120px] flex justify-center align-center z-[100]">
     <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasNavEL"></canvas>
     <ul class="container justify-between content-center flex space-x-[15px]">
@@ -37,6 +37,7 @@ const { locale } = useI18n();
 const lottieEL = ref(null);
 const canvasEL = ref(null);
 const canvasNavEL = ref(null);
+const lottieVisible = ref(false);
 
 
 
@@ -403,6 +404,11 @@ onMounted( async () => {
     scroll.tick(delta);
 
     const __scroll = scroll.getPosition()
+
+
+    lottieVisible.value = props.cube ? unlerp(Math.min(700,window.innerHeight * 0.5),0,__scroll) * unlerp(4,5,clock.getElapsedTime(),true) : 0;
+
+    console.log(lottieVisible.value+" "+window.scrollY+" " + window.innerHeight * 0.5);
 
     background.material.uniforms.uTime.value+=delta
 
