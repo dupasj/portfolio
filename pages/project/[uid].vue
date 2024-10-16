@@ -12,6 +12,7 @@ import { useI18n } from 'vue-i18n';
 import { useNuxtApp } from '#app';
 import Background from "../../components/Background.vue";
 import Slices from "../../components/Slices.vue";
+import {useHead} from "@unhead/vue";
 const { $prismic } = useNuxtApp();
 const { locale } = useI18n();
 const client = usePrismic()
@@ -27,6 +28,12 @@ const { data, error } = await useFirstPrismicDocument({
     client.filter.at('document.type', "project"),
     client.filter.at('my.project.uid', route.params.uid),
   ]
+});
+
+useHead({
+  meta: [
+    { hid: 'robots', name: 'robots', content: 'noindex, follow' },
+  ],
 });
 
 </script>

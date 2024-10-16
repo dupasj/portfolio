@@ -38,6 +38,12 @@ onMounted(() => {
   }
 });
 
+useHead({
+  meta: [
+    { hid: 'robots', name: 'robots', content: 'noindex, follow' },
+  ],
+});
+
 watchEffect(() => {
   if (data.value === null) {
     // Default SEO for untranslated content

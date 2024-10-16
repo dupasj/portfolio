@@ -13,6 +13,7 @@ import { useNuxtApp } from '#app';
 import Container from "../../components/Container.vue";
 import Background from "../../components/Background.vue";
 import Slices from "../../components/Slices.vue";
+import {useHead} from "@unhead/vue";
 const { locale } = useI18n();
 const client = usePrismic()
 
@@ -28,4 +29,11 @@ const { data, error } = await useFirstPrismicDocument({
     client.filter.at('my.skill.uid', route.params.uid),
   ]
 });
+
+useHead({
+  meta: [
+    { hid: 'robots', name: 'robots', content: 'noindex, follow' },
+  ],
+});
+
 </script>
