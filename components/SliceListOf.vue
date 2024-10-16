@@ -1,5 +1,5 @@
  <template>
-  <Container :screen="props.slice.primary.screen" :container="props.slice.primary.container">
+  <Container :margin="props.slice.primary.margin" :screen="props.slice.primary.screen" :container="props.slice.primary.container">
     <h3 class="scroll-animation text-left mb-[20px] xl:mb-[30px] block w-full h-auto xl:text-center text-white xl:text-[75px] lg:text-[65px] md:text-[50px] text-[35px] font-bold m-0 p-0 font-sans subpixel-antialiased">
       {{ $prismic.asText(props.slice.primary.title) }}</h3>
 
