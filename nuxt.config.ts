@@ -1,8 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-import {undefined} from "zod";
 
 export default defineNuxtConfig({
-  $development: undefined, $env: undefined, $meta: undefined, $production: undefined, $test: undefined,
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
@@ -63,12 +61,7 @@ export default defineNuxtConfig({
     defaultLocale: 'en',
   },
 
-  nitro: {
-    preset: "cloudflare-pages"
-  },
-
   modules: [
-    "nitro-cloudflare-dev",
     "@nuxtjs/prismic",
     '@nuxtjs/i18n',
     'nuxt-locomotive-scroll'
