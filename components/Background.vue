@@ -11,9 +11,6 @@
       <li class="flex">
         <NuxtLink :to="{ name: `index___${locale}` }" class="flex content-center justify-center justify-items-center items-center space-x-[3px] text-white p-[7px] subpixel-antialiased"><span class="scroll-animation rounded-full px-[10px] py-[3px] bg-[#FF0058] inline-block font-sans text-[16px]">Jérémie</span><span class="scroll-animation inline-block font-sans text-[16px]">Dupas_></span></NuxtLink>
       </li>
-      <li class="inline-block">
-        <span class="inline-block text-white p-[7px] subpixel-antialiased font-sans text-[18px]">FR</span>
-      </li>
     </ul>
   </nav>
 </template>
@@ -31,6 +28,12 @@ import Spring from "~/lib/spring/spring.ts";
 import {useI18n} from "vue-i18n";
 import lottie from 'lottie-web'
 
+
+/*
+<li class="inline-block">
+        <span class="inline-block text-white p-[7px] subpixel-antialiased font-sans text-[18px]">FR</span>
+      </li>
+ */
 
 const { locale } = useI18n();
 
