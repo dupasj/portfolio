@@ -408,8 +408,6 @@ onMounted( async () => {
 
     lottieVisible.value = props.cube ? unlerp(Math.min(700,window.innerHeight * 0.5),0,__scroll) * unlerp(4,5,clock.getElapsedTime(),true) : 0;
 
-    console.log(lottieVisible.value+" "+window.scrollY+" " + window.innerHeight * 0.5);
-
     background.material.uniforms.uTime.value+=delta
 
 
