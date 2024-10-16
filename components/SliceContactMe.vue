@@ -1,5 +1,5 @@
 <template>
-  <Container :padding="false">
+  <Container :section="true" :padding="false">
     <div class="blur-inner-container relative w-full block xl:grid xl:grid-cols-2 rounded-[0px] xl:rounded-[30px]">
       <div class="left space-y-[30px]">
         <a :href="item.target_link.url ?? item.file.url ?? null" v-for="item of props.slice.items" class="w-full relative xl:pl-[76px] pl-[60px] no-underline">
@@ -78,6 +78,7 @@ const updateForm = () => {
 
 .blur-inner-container .left{
   @apply pr-[15px] pl-[15px] pt-[115px] pb-[115px];
+
   @apply xl:pl-[90px] xl:pr-[90px];
   @apply flex flex-col justify-center content-center items-center;
 
@@ -87,6 +88,9 @@ const updateForm = () => {
 .blur-inner-container .right{
   @apply pr-[15px] pl-[15px] pt-[115px] pb-[115px];
   @apply xl:pl-[90px] xl:pr-[90px];
+
+  @apply flex content-center justify-items-center justify-center items-center;
+
 
   @apply rounded-[0px];
   @apply xl:rounded-[30px];
@@ -101,7 +105,7 @@ const updateForm = () => {
   @apply w-[350px] h-auto flex flex-col justify-center content-center justify-items-center items-center;
 }
 .form .input-field{
-  @apply w-[350px] h-auto flex flex-col justify-center content-center justify-items-center items-center;
+  @apply max-w-[350px] h-auto flex flex-col justify-center content-center justify-items-center items-center;
   @apply mt-[24px] mb-[24px];
 }
 .form .input-field textarea,
