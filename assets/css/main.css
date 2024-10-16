@@ -45,16 +45,19 @@ p{
 }
 
 h1{
+    line-height: 1.3;
     @apply text-[40px];
     @apply xl:text-[50px];
     @apply w-full h-auto text-white font-sans text-left mb-[30px];
 }
 h2{
+    line-height: 1.3;
     @apply text-[40px];
     @apply xl:text-[45px];
     @apply w-full h-auto text-white font-sans text-left mb-[30px];
 }
 h3{
+    line-height: 1.3;
     @apply text-[30px];
     @apply xl:text-[40px];
     @apply w-full h-auto text-white font-sans text-left mb-[30px];
