@@ -33,6 +33,7 @@ const props = defineProps({
 });
 import htmlSerializer from "~/lib/html-serializer";
 import Container from "~/components/Container.vue";
+import shuffle from "~/lib/shuffle.ts";
 
 const client = usePrismic()
 const route = useRoute()
@@ -57,11 +58,10 @@ const {data: items} = await useAsyncData(`list-of-${type}-${props.slice.primary.
 
   const data = await client.client.get({
     filters: filters,
-    pageSize: props.slice.primary.limit,
+    pageSize: props.slice.primary.limit * 2,
     lang: lang
   });
 
-  return data.results;
-
+  return shuffle(data.results).slice(0,props.slice.primary.limit);
 })
 </script>
