@@ -35,7 +35,9 @@ a{
 }
 ol > li,
 ul > li{
-    @apply h-auto text-white text-[24px] font-sans text-left;
+    @apply text-[18px];
+    @apply md:text-[24px];
+    @apply h-auto text-white font-sans text-left;
 }
 
 p{
