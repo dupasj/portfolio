@@ -50,5 +50,57 @@ export default defineNuxtPlugin((nuxtApp) => {
         queue.push(... document.querySelectorAll(".scroll-animation:not(.scroll-animated)"))
 
         setTimeout(reveal,75)
+
+
+
+        let timeout: NodeJS.Timeout|null = null;
+        document.addEventListener('scroll', () => {
+            if (timeout !== null){
+                clearTimeout(timeout);
+                timeout = null;
+            }
+
+            timeout = setTimeout(scrolled,150);
+        });
+        const scrolled = () => {
+            const threshold = window.innerHeight * 0.2;
+            const elements = document.querySelectorAll('.snap');
+
+            const __elements: [Element,DOMRect][] = Array.from(elements).map(element => [
+                element,
+                element.getBoundingClientRect()
+            ])
+
+            for(let index=0;index<__elements.length;index++){
+                const element = __elements[index];
+
+                const topDistance = index < (__elements.length - 1) ? Math.abs(element[1].top) : element[1].top;
+                if (topDistance === 0){
+                    return;
+                }
+                if (topDistance < threshold && topDistance > 0){
+                    console.log(window.scrollY + element[1].top,topDistance)
+                    window.scrollTo({
+                        top: window.scrollY + element[1].top,
+                        behavior: 'smooth'
+                    });
+                    return
+                }
+            }
+
+            /*
+            for(const element of __elements){
+                const bottomDistance = Math.abs(element[1].bottom - window.innerHeight);
+                if (bottomDistance < 200){
+                    console.log(window.scrollY + element[1].bottom - window.innerHeight)
+                    window.scrollTo({
+                        top: window.scrollY + element[1].bottom - window.innerHeight,
+                        behavior: 'smooth'
+                    });
+                    return
+                }
+            }
+             */
+        }
     });
 })
