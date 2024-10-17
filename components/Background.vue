@@ -200,7 +200,7 @@ onMounted( async () => {
   };
   const orientationPosition = (event) => {
     mouse.x.springTo(lerp(-1,1,unlerp(-45,45,event.gamma ?? 0,true)) * 2);
-    mouse.y.springTo(lerp(-1,1,unlerp(0,60,event.beta ?? 0,true)) * 2);
+    mouse.y.springTo(lerp(1,-1,unlerp(0,60,event.beta ?? 0,true)) * 2);
   };
 
 
@@ -493,7 +493,9 @@ onMounted( async () => {
 
     requestAnimationFrame(update);
   }
+  update();
 
+  /*
   const ready = () => {
     if (document.readyState !== "complete"){
       return;
@@ -504,5 +506,6 @@ onMounted( async () => {
   };
   document.addEventListener("readystatechange",ready);
   ready();
+   */
 });
 </script>
