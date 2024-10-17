@@ -60,7 +60,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 timeout = null;
             }
 
-            timeout = setTimeout(scrolled,150);
+            timeout = setTimeout(scrolled,200);
         });
         const scrolled = () => {
             const threshold = window.innerHeight * 0.2;
@@ -74,11 +74,11 @@ export default defineNuxtPlugin((nuxtApp) => {
             for(let index=0;index<__elements.length;index++){
                 const element = __elements[index];
 
-                const topDistance = index < (__elements.length - 1) ? Math.abs(element[1].top) : element[1].top;
+                const topDistance = element[1].top;
                 if (topDistance === 0){
                     return;
                 }
-                if (topDistance < threshold && topDistance > 0){
+                if (topDistance < threshold && topDistance > 0 || (topDistance > -100 && topDistance < 0 && index < (__elements.length - 1))){
                     console.log(window.scrollY + element[1].top,topDistance)
                     window.scrollTo({
                         top: window.scrollY + element[1].top,
