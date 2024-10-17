@@ -53,7 +53,7 @@ vec4 diffuse(vec2 st){
 
   return mix(
   vec4(color*uIntensity*0.9,1.),
-  vec4(1.,1.,1.,1.),
+  vec4(24./255.,27./255.,63./255.,1.),
   smoothstep(0.,1.,uWhite)
   );
 }
