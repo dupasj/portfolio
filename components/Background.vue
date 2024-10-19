@@ -1,9 +1,8 @@
 <template>
   <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasEL"></canvas>
-  <div class="w-full pt-[100vh]" v-if="props.cube">
+  <div class="w-full" :class="{'pt-[100vh]': props.cube}">
     <slot/>
   </div>
-  <slot v-else/>
   <div :style="{opacity: lottieVisible}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottieEL"></div>
   <nav class="fixed left-0 top-0 w-full h-[120px] flex justify-center align-center z-[100]">
     <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasNavEL"></canvas>
