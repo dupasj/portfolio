@@ -1,6 +1,8 @@
 <template>
   <Container :screen="slice.primary.screen" :container="slice.primary.container">
-    <img class="scroll-animation" :style="{'max-height': (slice.primary.image_max_height ? slice.primary.image_max_height+'px' : 'none' )}" :class="{'rounded-[20px]': slice.primary.rounded}" :alt="slice.primary.image.alt" :src="slice.primary.image.url"/>
+    <div class="flex items-start justify-start content-start w-full">
+      <img class="scroll-animation max-h-[50vh]" :class="{'rounded-[20px]': slice.primary.rounded}" :alt="slice.primary.image.alt" :src="slice.primary.image.url"/>
+    </div>
   </Container>
 </template>
 <script>
