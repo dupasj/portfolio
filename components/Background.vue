@@ -175,9 +175,19 @@ onMounted( async () => {
   background.position.set(0,0,-100);
   camera.add(background)
 
+  const cubes = [
+    {
+      position: new THREE.Vector2(0,0),
+      mesh: new THREE.Group()
+    }
+  ]
 
-  const globalGroup = new THREE.Group();
-  camera.add(globalGroup);
+  for(const cube of cubes){
+    camera.add(cube.mesh)
+  }
+
+
+
 
   const points = [];
   const mouse = {
@@ -250,23 +260,22 @@ onMounted( async () => {
           continue;
         }
 
-        const mesh = (() => {
-          return new THREE.Mesh(
-              new THREE.BoxGeometry(),
-              cubeMaterial
-          )
-        })()
-
-        globalGroup.add(mesh);
-
         const point = {
           animation: {
             x: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
             y: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
             z: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
           },
-          group: mesh,
+          meshes: cubes.map(cube => {
+            const mesh = new THREE.Mesh(
+                new THREE.BoxGeometry(),
+                cubeMaterial
+            );
+            cube.mesh.add(mesh);
+            return mesh;
+          }),
         };
+
         point.animation.x.freezeTo(x-1)
         point.animation.y.freezeTo(y-1)
         point.animation.z.freezeTo(z-1)
