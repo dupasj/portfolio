@@ -328,7 +328,12 @@ onMounted( async () => {
     background.scale.set(scale * camera.aspect,scale,1);
 
     const y = lerp(-1,1,0.5 * (window.innerHeight + 10) / window.innerHeight);
-    globalGroup.position.copy(unproject(new THREE.Vector3(0,y,-15),camera))
+
+    for(const cube of cubes){
+      cube.mesh.position.copy(unproject(new THREE.Vector3(cube.position.x,cube.position.y + y,-15),camera))
+    }
+
+
   };
   resize()
   window.addEventListener("resize",resize)
@@ -433,11 +438,14 @@ onMounted( async () => {
 
 
     if (props.cube){
-      globalGroup.rotateY(delta * Math.PI * 0.1)
-      globalGroup.rotateX(delta * Math.PI * 0.01)
-      globalGroup.rotateZ(delta * Math.PI * 0.04)
+      for(const cube of cubes){
+        cube.mesh.rotateY(delta * Math.PI * 0.1)
+        cube.mesh.rotateX(delta * Math.PI * 0.01)
+        cube.mesh.rotateZ(delta * Math.PI * 0.04)
+      }
 
-      const invert = globalGroup.quaternion.clone().invert();
+
+      const invert = cubes[0].mesh.quaternion.clone().invert();
 
       cubeMaterial.uniforms.uTime.value+=delta
       cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
@@ -489,15 +497,18 @@ onMounted( async () => {
           z: point.animation.z.getPosition(),
         };
 
-        point.group.position.set(
-            position.x * __spacing + ratio(position.x,direction.x) * 0.4 + up.x * (1 - appear) * -7 + up.x * delayed_scroll * 7,
-            position.y * __spacing + ratio(position.y,direction.y) * 0.4 + up.y * (1 - appear) * -7 + up.y * delayed_scroll * 7,
-            position.z * __spacing + ratio(position.z,direction.z) * 0.4 + up.z * (1 - appear) * -7 + up.z * delayed_scroll * 7
-        );
+        point.meshes.forEach(mesh => {
+          mesh.position.set(
+              position.x * __spacing + ratio(position.x,direction.x) * 0.4 + up.x * (1 - appear) * -7 + up.x * delayed_scroll * 7,
+              position.y * __spacing + ratio(position.y,direction.y) * 0.4 + up.y * (1 - appear) * -7 + up.y * delayed_scroll * 7,
+              position.z * __spacing + ratio(position.z,direction.z) * 0.4 + up.z * (1 - appear) * -7 + up.z * delayed_scroll * 7
+          );
+        })
+
         cubeMaterial.uniforms.uOpacity.value = lerp(0,1,appear * (1 - delayed_scroll),true);
       }
     }
-    globalGroup.visible = props.cube;
+    // globalGroup.visible = props.cube;
 
     renderer.background.render(scene,camera);
     composer.render(delta);
