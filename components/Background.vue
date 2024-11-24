@@ -176,9 +176,9 @@ onMounted( async () => {
   camera.add(background)
 
 
-  const group = new THREE.Group();
-  group.position.set(0,0,-50);
-  camera.add(group);
+  const globalGroup = new THREE.Group();
+  globalGroup.position.set(0,0,-50);
+  camera.add(globalGroup);
 
   const points = [];
   const mouse = {
@@ -258,7 +258,7 @@ onMounted( async () => {
           )
         })()
 
-        group.add(mesh);
+        globalGroup.add(mesh);
 
         const point = {
           animation: {
@@ -316,7 +316,7 @@ onMounted( async () => {
     background.scale.set(scale * camera.aspect,scale,1);
 
     const y = lerp(-1,1,0.5 * (window.innerHeight + 10) / window.innerHeight);
-    group.position.copy(unproject(new THREE.Vector3(0,y,-15),camera))
+    globalGroup.position.copy(unproject(new THREE.Vector3(0,y,-15),camera))
   };
   resize()
   window.addEventListener("resize",resize)
@@ -421,11 +421,11 @@ onMounted( async () => {
 
 
     if (props.cube){
-      group.rotateY(delta * Math.PI * 0.1)
-      group.rotateX(delta * Math.PI * 0.01)
-      group.rotateZ(delta * Math.PI * 0.04)
+      globalGroup.rotateY(delta * Math.PI * 0.1)
+      globalGroup.rotateX(delta * Math.PI * 0.01)
+      globalGroup.rotateZ(delta * Math.PI * 0.04)
 
-      const invert = group.quaternion.clone().invert();
+      const invert = globalGroup.quaternion.clone().invert();
 
       cubeMaterial.uniforms.uTime.value+=delta
       cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
@@ -485,7 +485,7 @@ onMounted( async () => {
         cubeMaterial.uniforms.uOpacity.value = lerp(0,1,appear * (1 - delayed_scroll),true);
       }
     }
-    group.visible = props.cube;
+    globalGroup.visible = props.cube;
 
     renderer.background.render(scene,camera);
     composer.render(delta);
