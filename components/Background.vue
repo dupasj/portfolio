@@ -177,7 +177,6 @@ onMounted( async () => {
 
 
   const globalGroup = new THREE.Group();
-  globalGroup.position.set(0,0,-50);
   camera.add(globalGroup);
 
   const points = [];
