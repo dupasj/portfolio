@@ -1,6 +1,6 @@
 <template>
   <Container :section="true" :padding="false">
-    <div class="contact-background backdrop-blur-[11px] w-full xl:w-auto xl:min-w-[700px] backdrop-opacity-[0.24] flex flex-col justify-center content-center items-center xl:pl-[90px] xl:pr-[90px] rounded-[0px] xl:rounded-[30px]">
+    <div class="xl:self-start xl:place-self-start xl:justify-self-start contact-background backdrop-blur-[11px] w-full xl:w-auto xl:max-w-[40%] xl:min-w-[600px] backdrop-opacity-[0.24] flex flex-col justify-center content-center items-center xl:pl-[90px] xl:pr-[90px] rounded-[0px] xl:rounded-[30px]">
       <div class="inline-flex flex-col justify-center content-center items-start xl:pl-[90px] xl:pr-[90px] w-auto space-y-[30px] pr-[15px] pl-[15px] pt-[115px] pb-[115px]">
         <a target="_blank" :href="item.link.url ?? null" v-for="item of props.slice.items" class="w-auto relative xl:pl-[76px] pl-[60px] no-underline">
           <div class="scroll-animation absolute left-0 top-[50%] -translate-y-1/2 xl:w-[56px] xl:h-[56px] w-[45px] h-[45px] rounded-full border border-[#52486C] inline-flex justify-center items-center content-center justify-items-center">
