@@ -179,6 +179,10 @@ onMounted( async () => {
     {
       position: new THREE.Vector2(0,0),
       mesh: new THREE.Group()
+    },
+    {
+      position: new THREE.Vector2(0.5,0),
+      mesh: new THREE.Group()
     }
   ]
 
