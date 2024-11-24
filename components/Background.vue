@@ -178,19 +178,17 @@ onMounted( async () => {
   const cubes = [
     {
       position: new THREE.Vector2(0,0),
-      mesh: new THREE.Group()
+      group: new THREE.Group()
     },
     {
       position: new THREE.Vector2(0.5,0),
-      mesh: new THREE.Group()
+      group: new THREE.Group()
     }
   ]
 
   for(const cube of cubes){
-    camera.add(cube.mesh)
+    camera.add(cube.group)
   }
-
-
 
 
   const points = [];
@@ -270,13 +268,16 @@ onMounted( async () => {
             y: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
             z: new Spring(spring.point.stiffness,spring.point.damping,spring.point.mass),
           },
-          meshes: cubes.map(cube => {
+          meshes: cubes.map((cube,index) => {
             const mesh = new THREE.Mesh(
                 new THREE.BoxGeometry(),
                 cubeMaterial
             );
-            cube.mesh.add(mesh);
-            return mesh;
+            cube.group.add(mesh);
+            return {
+              mesh: mesh,
+              index: index
+            };
           }),
         };
 
@@ -330,7 +331,7 @@ onMounted( async () => {
     const y = lerp(-1,1,0.5 * (window.innerHeight + 10) / window.innerHeight);
 
     for(const cube of cubes){
-      cube.mesh.position.copy(unproject(new THREE.Vector3(cube.position.x,cube.position.y + y,-15),camera))
+      cube.group.position.copy(unproject(new THREE.Vector3(cube.position.x,cube.position.y + y,-15),camera))
     }
 
 
@@ -422,7 +423,7 @@ onMounted( async () => {
     scroll.springTo(window.scrollY);
     scroll.tick(delta);
 
-    const __scroll = scroll.getPosition()
+    const __scroll = scroll.getPosition();
 
 
     lottieVisible.value = props.cube ? unlerp(Math.min(700,window.innerHeight * 0.5),0,__scroll) * unlerp(4,5,clock.getElapsedTime(),true) : 0;
@@ -439,13 +440,13 @@ onMounted( async () => {
 
     if (props.cube){
       for(const cube of cubes){
-        cube.mesh.rotateY(delta * Math.PI * 0.1)
-        cube.mesh.rotateX(delta * Math.PI * 0.01)
-        cube.mesh.rotateZ(delta * Math.PI * 0.04)
+        cube.group.rotateY(delta * Math.PI * 0.1)
+        cube.group.rotateX(delta * Math.PI * 0.01)
+        cube.group.rotateZ(delta * Math.PI * 0.04)
       }
 
 
-      const invert = cubes[0].mesh.quaternion.clone().invert();
+      const invert = cubes[0].group.quaternion.clone().invert();
 
       cubeMaterial.uniforms.uTime.value+=delta
       cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
@@ -460,7 +461,8 @@ onMounted( async () => {
         y: mouse.y.getPosition(),
       };
 
-      const scroll = Math.min(__scroll/window.innerHeight * 2,1);
+
+      console.log(scroll);
       const direction = new THREE.Vector3(
           __mouse.x,
           __mouse.y,
@@ -475,16 +477,36 @@ onMounted( async () => {
       spacing.tick(delta);
       const __spacing = spacing.getPosition()
 
+      const scrolls = [
+        Math.max(
+            -1,
+            Math.min(
+                1,
+                (__scroll)/window.innerHeight*-2
+            )
+        ),
+        Math.max(
+            -1,
+            Math.min(
+                1,
+                (4500 - __scroll)/window.innerHeight*-2
+            )
+        )
+      ]
+
       for(let i=0;i<points.length;i++){
         const point = points[i];
 
+
+
         const delay = ((clock.getElapsedTime() - 0.1) * 1000) - (points.length - i) * 20;
         const appear = d3.easeQuadOut(unlerp(0,1200,delay,true));
+
         const ratio = (cube_position,position) => {
           return position * (Math.abs(position - cube_position * -1));
         };
 
-        const delayed_scroll = d3.easeQuadIn(i / points.length * scroll + scroll);
+
 
 
         point.animation.x.tick(delta);
@@ -498,14 +520,20 @@ onMounted( async () => {
         };
 
         point.meshes.forEach(mesh => {
-          mesh.position.set(
+          const scroll = scrolls[mesh.index];
+
+          const abs = Math.abs(scroll);
+          const delayed_scroll = d3.easeQuadIn(i / points.length * abs + abs) * Math.sign(scroll);
+
+          mesh.mesh.position.set(
               position.x * __spacing + ratio(position.x,direction.x) * 0.4 + up.x * (1 - appear) * -7 + up.x * delayed_scroll * 7,
               position.y * __spacing + ratio(position.y,direction.y) * 0.4 + up.y * (1 - appear) * -7 + up.y * delayed_scroll * 7,
               position.z * __spacing + ratio(position.z,direction.z) * 0.4 + up.z * (1 - appear) * -7 + up.z * delayed_scroll * 7
           );
+          cubeMaterial.uniforms.uOpacity.value = lerp(0,1,appear * (1 - Math.abs(delayed_scroll)),true);
         })
 
-        cubeMaterial.uniforms.uOpacity.value = lerp(0,1,appear * (1 - delayed_scroll),true);
+
       }
     }
     // globalGroup.visible = props.cube;
