@@ -79,7 +79,6 @@ export default defineNuxtPlugin((nuxtApp) => {
                     return;
                 }
                 if (topDistance < threshold && topDistance > 0 || (topDistance > -100 && topDistance < 0 && index < (__elements.length - 1))){
-                    console.log(window.scrollY + element[1].top,topDistance)
                     window.scrollTo({
                         top: window.scrollY + element[1].top,
                         behavior: 'smooth'
