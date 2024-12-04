@@ -1,5 +1,5 @@
 <template>
-  <Container :section="true" :padding="false">
+  <Container :section="true" :padding="false" screen="mobile">
     <div class="contact-background backdrop-blur-[11px] w-full xl:w-auto xl:min-w-[700px] backdrop-opacity-[0.24] flex flex-col justify-center content-center items-center xl:pl-[90px] xl:pr-[90px] rounded-[0px] xl:rounded-[30px]">
       <div class="inline-flex flex-col justify-center content-center items-start xl:pl-[90px] xl:pr-[90px] w-auto space-y-[30px] pr-[15px] pl-[15px] pt-[115px] pb-[115px]">
         <a target="_blank" :href="item.link.url ?? null" v-for="item of props.slice.items" class="w-auto relative xl:pl-[76px] pl-[60px] no-underline">
