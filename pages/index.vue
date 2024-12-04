@@ -30,26 +30,32 @@ useHead({
 watchEffect(() => {
   if (data.value === null) {
     useHead({
-      title: 'Default Title',
+      title: 'Portfolio of Jeremie - Homepage',
       meta: [
-        { hid: 'description', name: 'description', content: 'Default Description' },
+        { hid: 'description', name: 'description', content: 'Portfolio of Jeremie - Homepage' },
+        { hid: 'og:title', property: 'og:title', content: 'Portfolio of Jeremie - Homepage' },
+        { hid: 'og:description', property: 'og:description', content: 'Portfolio of Jeremie - Homepage' },
+        // { hid: 'og:image', property: 'og:image', content: '/default-image.jpg' },
+        { hid: 'og:url', property: 'og:url', content: window.location.href },
+        { hid: 'keywords', name: 'keywords', content: 'portfolio, jeremie, homepage' },
       ],
     });
   } else {
-    // SEO for Prismic content
+    // Extract data from Prismic
+    const title = $prismic.asText(data.value.data.seo_title);
+    const description = $prismic.asText(data.value.data.description);
+    // const image = data.value.data.seo_image?.url || '/fallback-image.jpg'; // Replace with your fallback image URL
+    const keywords = data.value.data.tags || '';
+
     useHead({
-      title: $prismic.asText(data.value.data.seo_title),
+      title,
       meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: $prismic.asText(data.value.data.description),
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: data.value.data.tags,
-        },
+        { hid: 'description', name: 'description', content: description },
+        { hid: 'og:title', property: 'og:title', content: title },
+        { hid: 'og:description', property: 'og:description', content: description },
+        // { hid: 'og:image', property: 'og:image', content: image },
+        { hid: 'og:url', property: 'og:url', content: window.location.href },
+        { hid: 'keywords', name: 'keywords', content: keywords },
       ],
     });
   }
