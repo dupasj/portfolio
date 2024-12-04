@@ -11,13 +11,15 @@ import { useNuxtApp } from '#app';
 import Background from '../components/Background.vue';
 const { $prismic } = useNuxtApp();
 const { locale } = useI18n();
+const prismic = usePrismic()
 
-const { data, error } = await useSinglePrismicDocument('homepage', {
+
+const { data, error } = await useAsyncData('data', () => prismic.client.getSingle('homepage', {
   lang: {
     fr: "fr-fr",
     en: "en-eu",
   }[locale.value]
-});
+}))
 
 useHead({
   meta: [
