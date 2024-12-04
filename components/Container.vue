@@ -42,7 +42,7 @@ const props = defineProps({
     default: true
   },
   screen: {
-    type: Boolean,
+    type: [Boolean,"mobile"],
     default: true
   },
   padding: {
