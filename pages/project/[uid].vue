@@ -15,20 +15,19 @@ import Slices from "../../components/Slices.vue";
 import {useHead} from "@unhead/vue";
 const { $prismic } = useNuxtApp();
 const { locale } = useI18n();
-const client = usePrismic()
+const prismic = usePrismic()
 
 const route = useRoute()
 
-const { data, error } = await useFirstPrismicDocument({
+const { data, error } = await useAsyncData(`project-${route.params.uid}`, () => prismic.client.getSingle('project', {
+  filters: [
+    prismic.filter.at('my.project.uid', route.params.uid),
+  ],
   lang: {
     fr: "fr-fr",
     en: "en-eu",
-  }[locale.value],
-  filters: [
-    client.filter.at('document.type', "project"),
-    client.filter.at('my.project.uid', route.params.uid),
-  ]
-});
+  }[locale.value]
+}))
 
 useHead({
   meta: [
