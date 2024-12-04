@@ -19,25 +19,6 @@ const { data, error } = await useSinglePrismicDocument('homepage', {
   }[locale.value]
 });
 
-
-onMounted(() => {
-  if (data.value) {
-    // this.$nuxt.$emit('language',this.data.alternate_languages)
-  }
-
-  if (process.client){
-    const ready = () => {
-      if (document.readyState !== "complete"){
-        return;
-      }
-
-      document.removeEventListener("readystatechange",ready);
-    };
-    document.addEventListener("readystatechange",ready);
-    ready();
-  }
-});
-
 useHead({
   meta: [
     { hid: 'robots', name: 'robots', content: 'noindex, follow' },
@@ -46,7 +27,6 @@ useHead({
 
 watchEffect(() => {
   if (data.value === null) {
-    // Default SEO for untranslated content
     useHead({
       title: 'Default Title',
       meta: [
