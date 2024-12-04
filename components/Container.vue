@@ -64,4 +64,9 @@ const props = defineProps({
 .fill-with-margin{
   min-height: calc(100vh - 140px);
 }
+@media (min-width: 1170px) {
+  .xl-fill-with-margin{
+    min-height: calc(100vh - 140px);
+  }
+}
 </style>
