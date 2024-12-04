@@ -14,7 +14,7 @@ const { locale } = useI18n();
 const prismic = usePrismic()
 
 
-const { data, error } = await useAsyncData('data', () => prismic.client.getSingle('homepage', {
+const { data, error } = await useAsyncData('homepage', () => prismic.client.getSingle('homepage', {
   lang: {
     fr: "fr-fr",
     en: "en-eu",
