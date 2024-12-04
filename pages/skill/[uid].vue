@@ -16,6 +16,7 @@ import Slices from "../../components/Slices.vue";
 import {useHead} from "@unhead/vue";
 const { locale } = useI18n();
 const prismic = usePrismic()
+const { $prismic } = useNuxtApp();
 
 const route = useRoute()
 
@@ -33,6 +34,34 @@ useHead({
   meta: [
     { hid: 'robots', name: 'robots', content: 'noindex, follow' },
   ],
+});
+
+watchEffect(() => {
+  if (data.value === null) {
+    useHead({
+      title: `Portfolio of Jeremie - Skill - ${route.params.uid}`,
+      meta: [
+        { hid: 'description', name: 'description', content: `Portfolio of Jeremie - Skill - ${route.params.uid}` },
+        { hid: 'og:title', property: 'og:title', content: `Portfolio of Jeremie - Skill - ${route.params.uid}` },
+        { hid: 'og:description', property: 'og:description', content: `Portfolio of Jeremie - Skill - ${route.params.uid}` },
+        { hid: 'keywords', name: 'keywords', content: 'portfolio, jeremie, homepage, skill' },
+      ],
+    });
+  } else {
+    const title = $prismic.asText(data.value.data.seo_title);
+    const description = $prismic.asText(data.value.data.description);
+    const keywords = data.value.data.tags || 'portfolio, jeremie, skill';
+
+    useHead({
+      title,
+      meta: [
+        { hid: 'description', name: 'description', content: description },
+        { hid: 'og:title', property: 'og:title', content: title },
+        { hid: 'og:description', property: 'og:description', content: description },
+        { hid: 'keywords', name: 'keywords', content: keywords },
+      ],
+    });
+  }
 });
 
 </script>
