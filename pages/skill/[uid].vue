@@ -15,20 +15,19 @@ import Background from "../../components/Background.vue";
 import Slices from "../../components/Slices.vue";
 import {useHead} from "@unhead/vue";
 const { locale } = useI18n();
-const client = usePrismic()
+const prismic = usePrismic()
 
 const route = useRoute()
 
-const { data, error } = await useFirstPrismicDocument({
+const { data, error } = await useAsyncData(`skill-${route.params.uid}`, () => prismic.client.getSingle('skill', {
+  filters: [
+    prismic.filter.at('my.skill.uid', route.params.uid),
+  ],
   lang: {
     fr: "fr-fr",
     en: "en-eu",
-  }[locale.value],
-  filters: [
-    client.filter.at('document.type', "skill"),
-    client.filter.at('my.skill.uid', route.params.uid),
-  ]
-});
+  }[locale.value]
+}))
 
 useHead({
   meta: [
