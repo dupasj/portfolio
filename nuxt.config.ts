@@ -4,6 +4,11 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
+  runtimeConfig: {
+    public: {
+      gtagId: "G-LXJ83GF0RK",
+    }
+  },
   postcss: {
     plugins: {
       tailwindcss: {},
