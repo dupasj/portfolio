@@ -4,32 +4,37 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev --host",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "npm run build && wrangler pages dev",
     "postinstall": "nuxt prepare",
-    "deploy": "npm run build && wrangler pages deploy",
-    "cf-typegen": "wrangler types"
+    "export-resume": "ts-node-transpile-only ./export-resume.ts",
+    "deploy": "npm run build && wrangler pages deploy"
   },
   "dependencies": {
-    "@nuxtjs/i18n": "^8.5.5",
+    "@nuxt/icon": "^1.15.0",
+    "@nuxtjs/i18n": "^9.5.5",
     "@nuxtjs/prismic": "^3.4.1",
     "d3-ease": "^3.0.1",
-    "glslify": "^7.1.1",
-    "glslify-loader": "^2.0.0",
-    "locomotive-scroll": "^4.1.4",
+    "html2canvas": "file:./html2canvas-1.4.1.tgz",
+    "html2pdf.js": "^0.10.1",
     "lottie-web": "^5.12.2",
-    "nuxt": "^3.13.0",
-    "nuxt-locomotive-scroll": "^0.0.1",
+    "nuxt": "^3.16.2",
+    "pdf-lib": "^1.17.1",
+    "puppeteer": "^24.12.0",
+    "qr-code-styling": "^1.9.2",
     "raw-loader": "^4.0.2",
     "three": "^0.168.0",
     "vue": "latest",
     "vue-router": "latest"
   },
   "devDependencies": {
-    "@types/locomotive-scroll": "^4.1.3",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13"
+    "tailwindcss": "^3.4.13",
+    "wrangler": "^4.18.0"
+  },
+  "overrides": {
+    "html2pdf.js": {
+      "html2canvas": "file:./html2canvas-1.4.1.tgz"
+    }
   }
 }

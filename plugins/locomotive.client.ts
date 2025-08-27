@@ -32,7 +32,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             queue.splice(index,1)
         }
 
-        setTimeout(reveal,75 / Math.pow(filter.length,0.1));
+        setTimeout(reveal,75 / Math.pow(filter.length,0.2));
     }
 
     nuxtApp.hook('app:mounted', () => {

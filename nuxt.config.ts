@@ -52,29 +52,19 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      {
-        code: 'en',
-        language: 'en-US'
-      },
-      /*
-      {
-        code: 'fr',
-        language: 'fr-FR'
-      }
-       */
+      { code: 'en', file: 'en.json' }
     ],
     defaultLocale: 'en',
+
   },
 
   modules: [
     "@nuxtjs/prismic",
     '@nuxtjs/i18n',
-    'nuxt-locomotive-scroll'
+    '@nuxt/icon',
   ],
-  devServer: {
-    https: {
-      key: 'localhost.key',
-      cert: 'localhost.crt'
-    }
+  nitro: {
+    preset: 'cloudflare-pages',
   },
+  ssr: false,
 })

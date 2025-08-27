@@ -1,11 +1,11 @@
 <template>
-  <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasEL"></canvas>
+  <canvas :style="`height: calc(100vh + 10px);opacity:${props.opacity}`" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasEL"></canvas>
   <div class="w-full" :class="{'pt-[100vh]': props.cube}">
     <slot/>
   </div>
   <div :style="{opacity: lottieVisible}" class="fixed bottom-[20px] left-[50%] -translate-x-1/2 pointer-events-none h-[120px] w-[120px]" ref="lottieEL"></div>
-  <nav class="fixed left-0 top-0 w-full h-[120px] flex justify-center align-center z-[100]">
-    <canvas style="height: calc(100vh + 10px)" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasNavEL"></canvas>
+  <nav v-if="props.menu" class="fixed left-0 top-0 w-full h-[120px] flex justify-center align-center z-[100]">
+    <canvas style="height: calc(100vh + 10px)" :class="{'opacity-0': !menu}" class="fixed w-full left-0 top-0 z-[-1] pointer-events-none" ref="canvasNavEL"></canvas>
     <ul class="container justify-between content-center flex space-x-[15px]">
       <li class="flex">
         <NuxtLink :to="{ name: `index___${locale}` }" class="flex content-center justify-center justify-items-center items-center space-x-[3px] text-white p-[7px] subpixel-antialiased"><span class="scroll-animation rounded-full px-[10px] py-[3px] bg-[#FF0058] inline-block font-sans text-[16px]">Jérémie</span><span class="scroll-animation inline-block font-sans text-[16px]">Dupas_></span></NuxtLink>
@@ -26,6 +26,7 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import Spring from "~/lib/spring/spring.ts";
 import {useI18n} from "vue-i18n";
 import lottie from 'lottie-web'
+import {Color} from "three";
 
 
 /*
@@ -61,6 +62,22 @@ const props = defineProps({
   cube: {
     type: Boolean,
     required: true,
+  },
+  color: {
+    type: String,
+    default: '#181b3f'
+  },
+  menu: {
+    type: Boolean,
+    default: true
+  },
+  light: {
+    type: Boolean,
+    default: false
+  },
+  opacity: {
+    type: Number,
+    default: 1
   },
 });
 
@@ -108,30 +125,36 @@ onMounted( async () => {
       canvas: canvasEL.value,
       powerPreference: "low-power"
     }),
-    nav: new THREE.WebGLRenderer({
+    nav: canvasNavEL.value ? new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
       canvas: canvasNavEL.value,
       powerPreference: "low-power"
-    }),
+    }) : null,
   }
-  const composer = new EffectComposer(renderer.nav);
-  const renderPass = new RenderPass(scene, camera);
-  composer.addPass(renderPass);
+  const composer = renderer.nav ? new EffectComposer(renderer.nav) : null;
+  const renderPass = renderer.nav ? new RenderPass(scene, camera) : null;
 
-  const gradientPass = new ShaderPass(new THREE.ShaderMaterial({
+  const gradientPass = renderer.nav ? new ShaderPass(new THREE.ShaderMaterial({
     depthWrite: true,
     depthTest: true,
     uniforms: {
       tDiffuse: { value: null },
       uResolution: new THREE.Uniform(new THREE.Vector2()),
+      uBackground: new THREE.Uniform(props.color),
       uFrom: new THREE.Uniform(80),
       uTo: new THREE.Uniform(120),
     },
     vertexShader: (await import('../assets/three/shader/gradient/gradient-vertex.glsl?raw')).default,
     fragmentShader: (await import('../assets/three/shader/gradient/gradient-fragment.glsl?raw')).default
-  }));
-  composer.addPass(gradientPass);
+  })) : null;
+
+  if (composer){
+    composer.addPass(renderPass);
+
+    composer.addPass(gradientPass);
+  }
+
 
 
 
@@ -163,6 +186,7 @@ onMounted( async () => {
           uTime: new THREE.Uniform(0),
           uIntensity: new THREE.Uniform(0),
           uOffset: new THREE.Uniform(new THREE.Vector2()),
+          uBackground: new THREE.Uniform(new THREE.Color(props.color)),
           uAspect: new THREE.Uniform(1),
           uWhite: new THREE.Uniform(1),
           uFbm: new THREE.Uniform(fbm),
@@ -234,6 +258,7 @@ onMounted( async () => {
       uIntensity: new THREE.Uniform(0),
       uOpacity: new THREE.Uniform(1),
       uOffset: new THREE.Uniform(new THREE.Vector2()),
+      uBackground: new THREE.Uniform(new THREE.Color(props.color)),
       uAspect: new THREE.Uniform(1),
       uWhite: new THREE.Uniform(1),
       uFbm: new THREE.Uniform(fbm),
@@ -288,22 +313,22 @@ onMounted( async () => {
     const h = window.innerHeight + 10;
 
     renderer.background.setSize(w,h,false)
-    renderer.nav.setSize(w,h,false)
+    renderer.nav?.setSize(w,h,false)
 
-    renderer.nav.setScissorTest(true);
-    renderer.nav.setScissor(0, h - 120, w, 120);
-    renderer.nav.setViewport(0, h - 120, w, 120);
+    renderer.nav?.setScissorTest(true);
+    renderer.nav?.setScissor(0, h - 120, w, 120);
+    renderer.nav?.setViewport(0, h - 120, w, 120);
 
 
     renderer.background.setPixelRatio(1);
-    renderer.nav.setPixelRatio(1);
+    renderer.nav?.setPixelRatio(1);
 
     camera.aspect = w/h
     camera.updateProjectionMatrix()
 
-    composer.setSize(w,h);
-    composer.setPixelRatio(1);
-    gradientPass.uniforms.uResolution.value.set(w,h);
+    composer?.setSize(w,h);
+    composer?.setPixelRatio(1);
+    gradientPass?.uniforms.uResolution.value.set(w,h);
 
 
 
@@ -413,10 +438,11 @@ onMounted( async () => {
     background.material.uniforms.uTime.value+=delta
 
 
-    background.material.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
+    background.material.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : props.light ? 3 : 0.8;
     background.material.uniforms.uOffset.value.x = 0;
     background.material.uniforms.uOffset.value.y = __scroll/window.innerHeight;
     background.material.uniforms.uWhite.value = lerp(1,0,clock.getElapsedTime(),true);
+    background.material.uniforms.uBackground.value = new Color(props.color);
 
 
 
@@ -428,10 +454,11 @@ onMounted( async () => {
       const invert = group.quaternion.clone().invert();
 
       cubeMaterial.uniforms.uTime.value+=delta
-      cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : 0.8;
+      cubeMaterial.uniforms.uIntensity.value = props.cube ? lerp(3,1.2,__scroll/window.innerHeight) : props.light ? 3 : 0.8;
       cubeMaterial.uniforms.uOffset.value.x = 0;
       cubeMaterial.uniforms.uOffset.value.y = __scroll/window.innerHeight;
       cubeMaterial.uniforms.uWhite.value = lerp(1,0,clock.getElapsedTime(),true);
+      cubeMaterial.uniforms.uBackground.value = new Color(props.color);
 
       mouse.x.tick(delta);
       mouse.y.tick(delta);
@@ -488,7 +515,11 @@ onMounted( async () => {
     group.visible = props.cube;
 
     renderer.background.render(scene,camera);
-    composer.render(delta);
+
+    if (composer){
+      composer.render(delta);
+    }
+
 
     requestAnimationFrame(update);
   }

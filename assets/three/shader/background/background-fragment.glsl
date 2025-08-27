@@ -6,6 +6,7 @@ uniform float uTime;
 uniform float uAspect;
 uniform float uIntensity;
 uniform float uWhite;
+uniform vec3 uBackground;
 uniform vec2 uOffset;
 uniform sampler2D uFbm;
 
@@ -53,7 +54,7 @@ vec4 diffuse(vec2 st){
 
   return mix(
   vec4(color*uIntensity*0.9,1.),
-  vec4(24./255.,27./255.,63./255.,1.),
+  vec4(uBackground,1.),
   smoothstep(0.,1.,uWhite)
   );
 }

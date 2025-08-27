@@ -5,14 +5,9 @@
 </template>
 
 <script setup>
-import { useHead } from '@unhead/vue';
-import { useI18n } from 'vue-i18n';
-import { useNuxtApp } from '#app';
-import Background from '../components/Background.vue';
 const { $prismic } = useNuxtApp();
 const { locale } = useI18n();
 const prismic = usePrismic()
-import { useRuntimeConfig, useRoute } from '#imports';
 const config = useRuntimeConfig();
 
 
@@ -22,12 +17,6 @@ const { data, error } = await useAsyncData('homepage', () => prismic.client.getS
     en: "en-eu",
   }[locale.value]
 }))
-
-useHead({
-  meta: [
-    { hid: 'robots', name: 'robots', content: 'noindex, follow' },
-  ],
-});
 
 watchEffect(() => {
   if (data.value === null) {

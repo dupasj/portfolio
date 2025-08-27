@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -17,6 +17,11 @@ body{
 body{
     height:auto;
     min-height: 100%;
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+    font-variation-settings:
+            "wdth" 100;
 }
 
 html.has-scroll-smooth {
@@ -30,6 +35,11 @@ html.has-scroll-dragging * {
     user-select: none;
 }
 
+.font-sans {
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+ }
 
 
 a{
@@ -95,21 +105,20 @@ ul{
     @apply block w-full h-auto list-disc pl-[27px];
 }
 
-
-
-
-.scroll-animation.scroll-leave-animation{
-    opacity: 0;
-    transform: translate3d(0, -5vh, 0) scale3d(1, 1.025, 1);
-}
-span.scroll-animation{
-    display: inline-block;
-}
-.scroll-animation{
-    transition: transform 0.75s cubic-bezier(0.33, 1, 0.68, 1),
-    opacity 0.75s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.scroll-animation:not(.scroll-animated){
-    opacity: 0;
-    transform: translate3d(0, 5vh, 0) scale3d(1, 1.025, 1);
+@media screen {
+    html:not(.pdf-mode) .scroll-animation.scroll-leave-animation{
+        opacity: 0;
+        transform: translate3d(0, -5vh, 0) scale3d(1, 1.025, 1);
+    }
+    html:not(.pdf-mode) span.scroll-animation{
+        display: inline-block;
+    }
+    html:not(.pdf-mode) .scroll-animation{
+        transition: transform 0.75s cubic-bezier(0.33, 1, 0.68, 1),
+        opacity 0.75s cubic-bezier(0.33, 1, 0.68, 1);
+    }
+    html:not(.pdf-mode) .scroll-animation:not(.scroll-animated){
+        opacity: 0;
+        transform: translate3d(0, 5vh, 0) scale3d(1, 1.025, 1);
+    }
 }

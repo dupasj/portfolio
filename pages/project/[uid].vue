@@ -29,12 +29,6 @@ const { data, error } = await useAsyncData(`project-${route.params.uid}`, () => 
   }[locale.value]
 }))
 
-useHead({
-  meta: [
-    { hid: 'robots', name: 'robots', content: 'noindex, follow' },
-  ],
-});
-
 watchEffect(() => {
 
   if (data.value === null) {
