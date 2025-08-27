@@ -4,115 +4,74 @@
       <div class="pl-[3rem] pr-[12rem] flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch bg-white w-full h-auto">
         <div class="flex flex-col justify-center items-center content-center justify-items-center w-full h-full space-y-[1rem]">
           <div class="space-y-[1.7rem] flex flex-col justify-center items-center content-center justify-items-center w-full h-auto">
-            <h1 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[8rem] font-normal leading-none m-0">JÉRÉMIE <b>DUPAS</b></h1>
-            <h2 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-normal leading-none m-0"><b>Fullstack</b> developer + <b>Creative</b> developer</h2>
+            <h1 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[8rem] font-normal leading-none m-0">PIERRE <b>GENIN</b></h1>
+            <h2 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-normal leading-none m-0">Dev Tester Specialist - Vehicle</h2>
           </div>
-          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Amsterdam and Available Immediately</i>
+          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Lyon and Looking for new opportunities</i>
         </div>
         <div class="flex flex-col justify-center items-center content-center justify-items-center min-w-[35rem] w-auto h-auto">
           <img src="../assets/image/profile.jpg" class="size-[35rem] rounded-full"/>
         </div>
       </div>
       <div class="flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch bg-white w-full h-full space-x-[7rem]">
-        <div class="flex flex-col justify-between items-start content-start justify-items-end w-full h-full">
+        <div class="flex flex-col justify-between items-start content-start justify-items-start w-full h-full pt-[20rem] pb-[20rem]">
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">SUMMARY</h3>
-            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Creative full-stack developer with 5+ years of experience, blending technical precision with artistic curiosity. Strong foundation in frontend technologies, AR experiences, and full-stack development. Passionate about crafting engaging, scalable tech experiences and exploring the edges of creative technology.</p>
+            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Video game professional with 3.5 years of experience as a Dev Tester Specialist Vehicle at Ubisoft Ivory Tower. Possesses in-depth knowledge of the production pipeline and development of AAA projects. With a degree in Project Management (Video Game / Game Design specialization), I am motivated to transition into a full Game Design / Level Design role to leverage my technical knowledge and on-the-ground experience for the benefit of team efficiency </p>
           </div>
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[5rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">WORK EXPERIENCE</h3>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
               <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
                 <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Fullstack Developer + Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Freelance | Amsterdam, Netherlands</p>
+                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Dev Tester Specialist - Vehicle</strong>
+                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">UBISOFT IVORY TOWER | Lyon, France</p>
                 </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Nov 2024 - Present</i>
+                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Nov 2021 - Present</i>
               </div>
               <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built a flexible face-swap web app (NuxtJS/NextJS, TailwindCSS) deployable as booth, web, or mobile view.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Integrated custom and third-party face-swap APIs (ConfUI, Replicate, Akool).</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Created a multilingual Garfield AR filter on Snapchat (11 languages).</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Ensure the quality of all vehicle art/3D related features, Game Engine/ 3Ds Max / In Game test.</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Shooting 3D models and creating approval documents for brands, communication between brands and artists.</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Coordination of Ubisoft Pune (India) QA teams for mass testing of our vehicles.</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Creation of vehicle showcase videos for internal communication.</li>
               </ul>
             </div>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
               <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
                 <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">GoSpooky | Amsterdam, Netherlands</p>
+                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Petty Officer</strong>
+                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Marine Nationale | Brest/Toulon, France</p>
                 </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Dec 2022 - Nov 2024</i>
+                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Jan 2021 - Oct 2021</i>
               </div>
               <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built AR/VR experiences for Jameson, Barbie (50 million views), Creamfields using WebGL/A-Frame/WebXR/Three.js/8thwall, Lens Studio, Effect House, Spark AR.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Led R&D: heartbeat tracker (FFT), ML prototyping with PyTorch.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Developed Node.js microservices, internal tools, and ReactJS site rebranding.</li>
-              </ul>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Atomic Digital Design | Paris, France</p>
-                </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Oct 2019 - Nov 2022</i>
-              </div>
-              <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Created highly successful branded AR/web experiences for clients like Dior (15M impressions), PNL (10M views in 1 week, sold-out tour tickets in <48 hours), Steve Madden (1.2k+ views in less than 3 weeks), utilizing Three.js, 8thWall, ReactJS, and NuxtJS.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Optimized mobile/web 3D rendering with designers and 3D artists.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Worked on NuxtJS/TailwindCSS website rebranding, focusing on performance, UX, and responsive design.</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Initial military training (Navigation, Cartography, Firefighting, Sports, Shooting, etc.).</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">DEASM Specialization Training (anti-submarine detector)</li>
               </ul>
             </div>
           </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none m-0 uppercase">PERSONAL PROJECTS</h3>
+          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[5rem]">
+            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">EDUCATION</h3>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
+              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
                 <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Dupy</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Backend framework</p>
+                  <strong class="scroll-animation font-bold subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Bachelor's in Video Game Project Management, Game Design Specialization</strong>
+                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">IIM – Institute of Internet and Multimedia | Paris, France</p>
                 </div>
-                <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built a scalable backend with Bun, Node.js & TypeScript.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Supported REST & GraphQL APIs, i18n, strong validation.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Generated docs with TypeDoc & LM Studio; CI with GitHub Actions + Jest.</li>
-                </ul>
-              </div>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Liketoshare</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Social network</p>
-                </div>
-                <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Developed a platform for ephemeral posts extended via likes/comments.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Enabled anonymous resharing to boost engagement while preserving privacy.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built backend, CI (GitLab), and frontend (React Native, jQuery, SCSS).</li>
-                </ul>
+                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Sep 2016 - Jun 2019</i>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-full space-y-[5rem] pt-[8rem]">
+        <div class="flex flex-col justify-between items-start content-start justify-items-start w-[30%] h-full pt-[8rem] pb-[50rem]">
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold whitespace-nowrap leading-none m-0 uppercase">Contact</h3>
             <ul class="list-none space-y-[1rem]">
-              <li class="scroll-animation leading-none align-middle whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:call-sharp.svg"/> +33 6 67 05 17 64</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:location-on-rounded.svg"/>Amsterdam, Netherlands</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/ic:outline-mail.svg"/>dupasj97@gmail.com</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/devicon-plain:linkedin.svg"/><a href="https://linkedin.com/in/jeremie-dupas">linkedin.com/in/jeremie-dupas</a></li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/tabler:world.svg"/><a href="https://portfolio-y71.pages.dev">portfolio-y71.pages.dev</a></li>
+              <li class="scroll-animation leading-none align-middle whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:call-sharp.svg"/>+33 6 40 75 09 48</li>
+              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:location-on-rounded.svg"/>Lyon, France</li>
+              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/ic:outline-mail.svg"/>genin.p@outlook.fr</li>
+              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/devicon-plain:linkedin.svg"/><a href="https://www.linkedin.com/in/pierre-genin-5226b5162/">linkedin.com/in/pierre-genin-5226b5162</a></li>
             </ul>
-          </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Education</h3>
-            <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
-              <strong class="scroll-animation font-bold subpixel-antialiased text-[#505050] text-[4.2rem] leading-none">Master’s in Web & Mobile Engineering</strong>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[4rem] leading-none">September 2016 - June 2021</p>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[3.2rem] font-light leading-none">Paris, France</p>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem] font-light leading-none">IIM – Institute of Internet and Multimedia</p>
-            </div>
           </div>
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none whitespace-nowrap m-0 uppercase">SKILLS</h3>
@@ -120,17 +79,15 @@
               <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
                 <h4 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Hard skills</h4>
                 <ul class="space-y-0">
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">VueJS / NuxtJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">NodeJS / TypeScript</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">8thWall / WebXR</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">ReactJS / NextJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">WebGL / ThreeJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">SQL / NoSQL</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">AmmoJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Postgres / PostGis</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Git / CI</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Puppeteer / Electron</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">HTML/CSS/JS</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Jira</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Miro</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Office 365</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Adobe Software</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Da Vinci Resolve</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Perforce</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Game Design</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Level Design</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">In-house game engine</li>
                 </ul>
               </div>
               <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
@@ -140,6 +97,9 @@
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Volunteer minded</li>
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Curious</li>
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Adaptation</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Project Management</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Collaborative Mindset</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Crew Spirit</li>
                 </ul>
               </div>
             </div>
@@ -152,7 +112,6 @@
             </ul>
           </div>
         </div>
-        <div ref="qrRef" class="absolute right-[5rem] bottom-[5rem] size-[17rem]"/>
       </div>
     </div>
     <div class="navbar fixed bottom-0 left-0 w-full z-50 bg-[#505050]/90 backdrop-blur-md text-white text-[4rem] px-[6rem] py-[2rem] flex justify-between items-center">
@@ -388,6 +347,9 @@ ul:not(.list-none){
  onMounted(() => {
    if (!process.client){
      return
+   }
+   if (!qrRef.value){
+     return;
    }
 
 
