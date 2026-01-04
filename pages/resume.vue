@@ -7,7 +7,7 @@
             <h1 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[8rem] font-normal leading-none m-0">PIERRE <b>GENIN</b></h1>
             <h2 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-normal leading-none m-0">Dev Tester Specialist - Vehicle</h2>
           </div>
-          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Lyon and Looking for new opportunities</i>
+          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Looking for new opportunities</i>
         </div>
         <div class="flex flex-col justify-center items-center content-center justify-items-center min-w-[35rem] w-auto h-auto">
           <img src="../assets/image/profile.jpg" class="size-[35rem] rounded-full"/>
@@ -17,7 +17,7 @@
         <div class="flex flex-col justify-between items-start content-start justify-items-start w-full h-full pt-[20rem] pb-[20rem]">
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">SUMMARY</h3>
-            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Video game professional with 3.5 years of experience as a Dev Tester Specialist Vehicle at Ubisoft Ivory Tower. Possesses in-depth knowledge of the production pipeline and development of AAA projects. With a degree in Project Management (Video Game / Game Design specialization), I am motivated to transition into a full Game Design / Level Design role to leverage my technical knowledge and on-the-ground experience for the benefit of team efficiency </p>
+            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Video game professional with 4 years of experience as a Dev Tester Specialist Vehicle at Ubisoft Ivory Tower. Possesses in-depth knowledge of the production pipeline and development of AAA projects. With a degree in Project Management (Video Game / Game Design specialization), I am motivated to transition into news opportunities and roles to leverage my technical knowledge and on-the-ground experience for the benefit of team efficiency </p>
           </div>
           <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[5rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">WORK EXPERIENCE</h3>
@@ -33,7 +33,7 @@
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Ensure the quality of all vehicle art/3D related features, Game Engine/ 3Ds Max / In Game test.</li>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Shooting 3D models and creating approval documents for brands, communication between brands and artists.</li>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Coordination of Ubisoft Pune (India) QA teams for mass testing of our vehicles.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Creation of vehicle showcase videos for internal communication.</li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Creation of vehicle showcase videos for internal communication. In-engine cinematography, editing with DaVinci Resolve, basic color grading and sound mixing.</li>
               </ul>
             </div>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
