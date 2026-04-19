@@ -7,7 +7,7 @@
             <h1 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[8rem] font-normal leading-none m-0">JÉRÉMIE <b>DUPAS</b></h1>
             <h2 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-normal leading-none m-0"><b>Fullstack</b> developer + <b>Creative</b> developer</h2>
           </div>
-          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Amsterdam and Available Immediately</i>
+          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Amsterdam</i>
         </div>
         <div class="flex flex-col justify-center items-center content-center justify-items-center min-w-[35rem] w-auto h-auto">
           <img src="../assets/image/profile.jpg" class="size-[35rem] rounded-full"/>
@@ -15,19 +15,38 @@
       </div>
       <div class="flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch bg-white w-full h-full space-x-[7rem]">
         <div class="flex flex-col justify-between items-start content-start justify-items-end w-full h-full">
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem]">
+          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[2rem]">
             <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">SUMMARY</h3>
-            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Creative full-stack developer with 5+ years of experience, blending technical precision with artistic curiosity. Strong foundation in frontend technologies, AR experiences, and full-stack development. Passionate about crafting engaging, scalable tech experiences and exploring the edges of creative technology.</p>
+            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Creative full-stack developer with 6+ years of experience, blending technical precision with artistic curiosity. Strong foundation in frontend technologies, real-time 3D, and full-stack development. Passionate about crafting engaging, scalable tech experiences and exploring the edges of creative technology.</p>
           </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[5rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">WORK EXPERIENCE</h3>
+
+
+          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[2rem]">
+            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
+              <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">WORK EXPERIENCE</h3>
+              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
+                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
+                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Frontend Developer</strong>
+                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">MX3D | Amsterdam, Netherlands</p>
+                </div>
+                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Sep 2025 - Present</i>
+              </div>
+              <ul>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">
+                  Developed and maintained an Electron-based interface to monitor and control industrial metal 3D printing robots.
+                </li>
+                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">
+                  Built real-time visualization tools using React and Three.js for print process tracking and diagnostics.
+                </li>
+              </ul>
+            </div>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
               <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
                 <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
                   <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Fullstack Developer + Creative Developer</strong>
                   <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Freelance | Amsterdam, Netherlands</p>
                 </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Nov 2024 - Present</i>
+                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Nov 2024 - Sep 2025</i>
               </div>
               <ul>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built a flexible face-swap web app (NuxtJS/NextJS, TailwindCSS) deployable as booth, web, or mobile view.</li>
@@ -46,7 +65,6 @@
               <ul>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built AR/VR experiences for Jameson, Barbie (50 million views), Creamfields using WebGL/A-Frame/WebXR/Three.js/8thwall, Lens Studio, Effect House, Spark AR.</li>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Led R&D: heartbeat tracker (FFT), ML prototyping with PyTorch.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Developed Node.js microservices, internal tools, and ReactJS site rebranding.</li>
               </ul>
             </div>
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
@@ -60,22 +78,20 @@
               <ul>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Created highly successful branded AR/web experiences for clients like Dior (15M impressions), PNL (10M views in 1 week, sold-out tour tickets in <48 hours), Steve Madden (1.2k+ views in less than 3 weeks), utilizing Three.js, 8thWall, ReactJS, and NuxtJS.</li>
                 <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Optimized mobile/web 3D rendering with designers and 3D artists.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Worked on NuxtJS/TailwindCSS website rebranding, focusing on performance, UX, and responsive design.</li>
               </ul>
             </div>
           </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none m-0 uppercase">PERSONAL PROJECTS</h3>
+          <div class="flex flex-col justify-between items-start content-start justify-items-start w-full h-auto  space-y-[2rem]">
             <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
+              <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none m-0 uppercase">PERSONAL PROJECTS</h3>
               <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
                 <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
                   <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Dupy</strong>
                   <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Backend framework</p>
                 </div>
                 <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built a scalable backend with Bun, Node.js & TypeScript.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Supported REST & GraphQL APIs, i18n, strong validation.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Generated docs with TypeDoc & LM Studio; CI with GitHub Actions + Jest.</li>
+                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built scalable backend framework (in Typescript) with REST/GraphQL support.</li>
+                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Focused on validation, i18n, and automated documentation (TypeDoc).</li>
                 </ul>
               </div>
             </div>
@@ -86,9 +102,7 @@
                   <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Social network</p>
                 </div>
                 <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Developed a platform for ephemeral posts extended via likes/comments.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Enabled anonymous resharing to boost engagement while preserving privacy.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built backend, CI (GitLab), and frontend (React Native, jQuery, SCSS).</li>
+                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Designed ephemeral content system with engagement-driven lifespan.</li>
                 </ul>
               </div>
             </div>
@@ -129,7 +143,7 @@
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">AmmoJS</li>
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Postgres / PostGis</li>
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Git / CI</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Puppeteer / Electron</li>
+                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Electron</li>
                   <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">HTML/CSS/JS</li>
                 </ul>
               </div>
