@@ -523,7 +523,7 @@ onMounted( async () => {
 
     requestAnimationFrame(update);
   }
-  update();
+  // update();
 
   /*
   const ready = () => {

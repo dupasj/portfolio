@@ -5,9 +5,9 @@
         <div class="header-content">
           <div class="header-title-group">
             <h1 class="scroll-animation header-title">JÉRÉMIE <b>DUPAS</b></h1>
-            <h2 class="scroll-animation header-subtitle"><b>Creative</b> Developer & <b>Frontend</b> Engineer</h2>
+            <h2 class="scroll-animation header-subtitle">Développeur <b>Créatif</b> & Ingénieur <b>Frontend</b></h2>
           </div>
-          <i class="scroll-animation header-subinformation">React · Three.js · Interactive Experiences · TypeScript</i>
+          <i class="scroll-animation header-subinformation">React · Three.js · Expériences interactives · TypeScript</i>
         </div>
         <div class="header-image-group">
           <img src="../assets/image/profile.jpg" class="header-image"/>
@@ -16,75 +16,67 @@
       <div class="content-group">
         <div class="content-left">
           <div class="category-group">
-            <h3 class="scroll-animation category-title">SUMMARY</h3>
-            <p class="scroll-animation category-summary">Creative Developer & Frontend Engineer with 7+ years building interactive web,
-              3D and real-time experiences for brands including <b>Dior</b>, <b>Barbie</b> and <b>Jameson</b>.
-              Specialized in <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> and <span>WebXR</span>, spanning creative
-              agencies, branded campaigns and industrial applications (including one
-              experience that reached 50M+ views). Focused on pairing strong engineering with creative technology to ship <span>pixel-perfect</span>, <span>real-time</span> experiences.
-            </p>
+            <h3 class="scroll-animation category-title">PROFIL</h3>
+            <p class="scroll-animation category-summary">Développeur Créatif & Ingénieur Frontend avec plus de 7 ans d'expérience dans la création d'<span>expériences web</span>, d'<span>expériences 3D et temps réel</span> pour des marques telles que <b>Dior</b>, <b>Barbie</b> et <b>Jameson</b>. Spécialisé en <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> et <span>WebXR</span>, avec une expérience en agences créatives, <span>campagnes de marque</span> et <span>applications industrielles</span>. Passionné par l'alliance d'une ingénierie solide et de la technologie créative pour concevoir des expériences temps réel <span>abouties</span> et <span>engageantes</span>.</p>
           </div>
           <div class="category-group">
-            <h3 class="scroll-animation category-title">WORK EXPERIENCE</h3>
+            <h3 class="scroll-animation category-title">EXPÉRIENCE</h3>
             <div class="category-content">
               <div class="work-group">
                 <div class="work-header">
                   <div class="work-title-group">
-                    <strong class="scroll-animation work-title">Frontend Developer</strong>
-                    <p class="scroll-animation work-subtitle">MX3D | Amsterdam, Netherlands</p>
+                    <strong class="scroll-animation work-title">Développeur Frontend</strong>
+                    <p class="scroll-animation work-subtitle">MX3D | Amsterdam, Pays-Bas</p>
                   </div>
                   <i class="scroll-animation work-date">Sep 2025 - Sep 2026</i>
                 </div>
                 <ul class="list">
                   <li class="scroll-animation work-bullet">
-                    Built <span>real-time 3D visualization</span> tools with <span>React</span> and <span>Three.js</span> to monitor and diagnose industrial metal 3D-printing processes.
+                    Développement et maintenance d'une application <span>Electron</span> pour la supervision et le contrôle de robots industriels d'impression métal 3D.
                   </li>
                   <li class="scroll-animation work-bullet">
-                    Developed and maintained an <span>Electron</span> application for monitoring and controlling industrial metal 3D-printing robots.
+                    Conception et ingénierie d'outils de <span>visualisation 3D en temps réel</span> avec <span>React</span> et <span>Three.js</span> pour le suivi et le diagnostic des processus d'impression métal 3D.
                   </li>
                 </ul>
               </div>
               <div class="work-group">
                 <div class="work-header">
                   <div class="work-title-group">
-                    <strong class="scroll-animation work-title">Creative Developer & Frontend Engineer</strong>
-                    <p class="scroll-animation work-subtitle">Freelance | Amsterdam, Netherlands</p>
+                    <strong class="scroll-animation work-title">Développeur Créatif & Ingénieur Frontend</strong>
+                    <p class="scroll-animation work-subtitle">Freelance | Amsterdam, Pays-Bas</p>
                   </div>
                   <i class="scroll-animation work-date">Nov 2024 - Sep 2025</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Created a multilingual <b>Garfield</b> <span>AR experience</span> for <span>Snapchat</span>, supporting 11 languages</li>
-                  <li class="scroll-animation work-bullet">Built a flexible face-swap web application with <span>Nuxt.js</span>, <span>Next.js</span> and <span>Tailwind CSS</span>, adapted for a photobooth/TV setup, a standalone web app, and an embedded <span>Flutter</span> application.</li>
-                  <li class="scroll-animation work-bullet">Integrated custom and third-party <span>AI image-generation APIs</span>, including <span>ComfyUI</span>, <span>Replicate</span> and <span>Akool</span>.</li>
+                  <li class="scroll-animation work-bullet">Création d'une <span>expérience AR multilingue</span> <b>Garfield</b> pour <span>Snapchat</span>, disponible en 11 langues.</li>
+                  <li class="scroll-animation work-bullet">Développement d'une <span>application web</span> de face-swap cross-platforme avec <span>Nuxt.js</span>, <span>Next.js</span> et <span>Tailwind CSS</span>, adaptée à un photobooth/TV, une application web ou l'intégration au sein d'une application <span>Flutter</span>.</li>
+                  <li class="scroll-animation work-bullet">Intégration d'API de <span>génération d'images IA personnalisées</span> comme <span>ComfyUI</span>, <span>Replicate</span> ou <span>Akool</span>.</li>
                 </ul>
               </div>
               <div class="work-group">
                 <div class="work-header">
                   <div class="work-title-group">
-                    <strong class="scroll-animation work-title">Creative Developer</strong>
-                    <p class="scroll-animation work-subtitle">GoSpooky | Amsterdam, Netherlands</p>
+                    <strong class="scroll-animation work-title">Développeur Créatif</strong>
+                    <p class="scroll-animation work-subtitle">GoSpooky | Amsterdam, Pays-Bas</p>
                   </div>
                   <i class="scroll-animation work-date">Dec 2022 - Nov 2024</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> AR experience that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span></li>
-                  <li class="scroll-animation work-bullet">Led creative R&D projects, including real-time heartbeat tracking using <span>FFT</span> and <span>machine-learning prototypes</span> built with <span>PyTorch</span>.
-                  </li>
+                  <li class="scroll-animation work-bullet">Création d'une expérience AR <b>Barbie</b> ayant atteint <b>50M+ de vues</b>, dans le cadre de <span>campagnes AR/VR interactives</span> pour des marques telles que <b>Jameson</b> et <b>Creamfields</b>, avec <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> et <span>Lens Studio</span>.</li>
+                  <li class="scroll-animation work-bullet">Direction de <span>projets R&D créatifs</span>, incluant un système de détection du rythme cardiaque en temps réel via <span>FFT</span> et des prototypes de <span>machine learning</span> développés avec <span>PyTorch</span>.</li>
                 </ul>
               </div>
               <div class="work-group">
                 <div class="work-header">
                   <div class="work-title-group">
-                    <strong class="scroll-animation work-title">Creative Developer</strong>
+                    <strong class="scroll-animation work-title">Développeur Créatif</strong>
                     <p class="scroll-animation work-subtitle">Atomic Digital Design | Paris, France</p>
                   </div>
                   <i class="scroll-animation work-date">Oct 2019 - Nov 2022</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Created interactive <span>AR and web experiences</span> for major brands including <b>Dior</b>, <b>PNL</b> and <b>Steve Madden</b>, reaching <span>15M+ impressions</span> and <span>10M+ views</span> within the first weeks of launch.</li>
-                  <li class="scroll-animation work-bullet">Developed immersive experiences with <span>Three.js</span>, <span>8th Wall</span>, <span>React</span> and <span>Nuxt.js</span>,
-                    working closely with designers and 3D artists to optimize <span>real-time 3D
-                    performance</span> across mobile and web.</li>
+                  <li class="scroll-animation work-bullet">Création d'<span>expériences AR et web interactives</span> pour des marques internationales telles que <b>Dior</b>, <b>Disney</b>, <b>PNL</b> et <b>Steve Madden</b>, atteignant <b>15M+ d'impressions</b> et <b>10M+ de vues</b> dès les premières semaines de lancement.</li>
+                  <li class="scroll-animation work-bullet">Développement d'<span>expériences immersives</span> avec <span>Three.js</span>, <span>8th Wall</span>, <span>React</span> et <span>Nuxt.js</span>, en collaboration étroite avec des designers UX/UI et des artistes 3D pour optimiser les performances <span>3D en temps réel</span> sur mobile et web.</li>
                 </ul>
               </div>
             </div>
@@ -95,14 +87,13 @@
             <h3 class="scroll-animation category-title">CONTACT</h3>
             <ul class="list">
               <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/material-symbols:call-sharp.svg"/> +33 6 67 05 17 64</li>
-              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/material-symbols:location-on-rounded.svg"/>Amsterdam, Netherlands</li>
               <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/ic:outline-mail.svg"/>dupasj97@gmail.com</li>
               <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/devicon-plain:linkedin.svg"/><a href="https://linkedin.com/in/jeremie-dupas">linkedin.com/in/jeremie-dupas</a></li>
               <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/tabler:world.svg"/><a href="https://portfolio-y71.pages.dev">portfolio-y71.pages.dev</a></li>
             </ul>
           </div>
           <div class="category-group">
-            <h3 class="scroll-animation category-title">SKILLS</h3>
+            <h3 class="scroll-animation category-title">COMPÉTENCES</h3>
             <div class="category-content">
               <div class="subcategory-group">
                 <h4 class="scroll-animation subcategory-title">Frontend</h4>
@@ -116,9 +107,8 @@
                 </ul>
               </div>
               <div class="subcategory-group">
-                <h4 class="scroll-animation subcategory-title">Creative Technology</h4>
+                <h4 class="scroll-animation subcategory-title">Technologies</h4>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Three.js / WebGL</li>
                   <li class="scroll-animation work-bullet">WebXR / 8th Wall</li>
                   <li class="scroll-animation work-bullet">Lens Studio</li>
                   <li class="scroll-animation work-bullet">A-Frame</li>
@@ -126,7 +116,7 @@
                 </ul>
               </div>
               <div class="subcategory-group">
-                <h4 class="scroll-animation subcategory-title">Backend & Tools</h4>
+                <h4 class="scroll-animation subcategory-title">Outils & Backend</h4>
                 <ul class="list">
                   <li class="scroll-animation work-bullet">REST / GraphQL</li>
                   <li class="scroll-animation work-bullet">PostgreSQL / PostGIS</li>
@@ -137,10 +127,10 @@
             </div>
           </div>
           <div class="category-group">
-            <h3 class="scroll-animation category-title">Language</h3>
+            <h3 class="scroll-animation category-title">LANGUES</h3>
             <ul class="list">
-              <li class="scroll-animation work-bullet">French — Native</li>
-              <li class="scroll-animation work-bullet">English — Fluent</li>
+              <li class="scroll-animation work-bullet">Français — Maternelle</li>
+              <li class="scroll-animation work-bullet">Anglais — Courant</li>
             </ul>
           </div>
         </div>
@@ -268,7 +258,7 @@
 }
 
 .content-left{
-  @apply flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[7rem] pt-[5rem];
+  @apply flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[4rem] pt-[2rem];
   span{
     @apply brightness-50 font-medium;
   }
@@ -378,7 +368,7 @@
  })
 
  useHead({
-   title: 'Resume of Jeremie Dupas – Fullstack & Creative Developer',
+   title: 'CV de Jeremie Dupas – Développeur Créatif & Ingénieur Fullstack',
    meta: [
      {
        hid: 'description',
