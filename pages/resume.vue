@@ -37,10 +37,10 @@
                 </div>
                 <ul class="list">
                   <li class="scroll-animation work-bullet">
-                    Built <span>real-time 3D visualization</span> tools with <span>React</span> and <span>Three.js</span> to monitor and diagnose industrial metal 3D-printing processes.
+                    Developed and maintained an <span>Electron</span> application for monitoring and controlling industrial metal 3D-printing robots.
                   </li>
                   <li class="scroll-animation work-bullet">
-                    Developed and maintained an <span>Electron</span> application for monitoring and controlling industrial metal 3D-printing robots.
+                    Built <span>real-time 3D visualization</span> tools with <span>React</span> and <span>Three.js</span> to monitor and diagnose industrial metal 3D-printing processes.
                   </li>
                 </ul>
               </div>
@@ -54,7 +54,7 @@
                 </div>
                 <ul class="list">
                   <li class="scroll-animation work-bullet">Created a multilingual <b>Garfield</b> <span>AR experience</span> for <span>Snapchat</span>, supporting 11 languages</li>
-                  <li class="scroll-animation work-bullet">Built a flexible face-swap web application with <span>Nuxt.js</span>, <span>Next.js</span> and <span>Tailwind CSS</span>, adapted for a photobooth/TV setup, a standalone web app, and an embedded <span>Flutter</span> application.</li>
+                  <li class="scroll-animation work-bullet">Built a <span>cross-platform web application</span> with <span>Nuxt.js</span>, <span>Next.js</span> and <span>Tailwind CSS</span>, adapted for a photobooth/TV setup, a standalone web app, and an embedded <span>Flutter</span> application.</li>
                   <li class="scroll-animation work-bullet">Integrated custom and third-party <span>AI image-generation APIs</span>, including <span>ComfyUI</span>, <span>Replicate</span> and <span>Akool</span>.</li>
                 </ul>
               </div>
@@ -67,8 +67,8 @@
                   <i class="scroll-animation work-date">Dec 2022 - Nov 2024</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> AR experience that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span></li>
-                  <li class="scroll-animation work-bullet">Led creative R&D projects, including real-time heartbeat tracking using <span>FFT</span> and <span>machine-learning prototypes</span> built with <span>PyTorch</span>.
+                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> <span>AR experience</span> that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span></li>
+                  <li class="scroll-animation work-bullet">Led <span>creative R&D projects</span>, including real-time heartbeat tracking using <span>FFT</span> and <span>machine-learning prototypes</span> built with <span>PyTorch</span>.
                   </li>
                 </ul>
               </div>
@@ -81,10 +81,8 @@
                   <i class="scroll-animation work-date">Oct 2019 - Nov 2022</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Created interactive <span>AR and web experiences</span> for major brands including <b>Dior</b>, <b>PNL</b> and <b>Steve Madden</b>, reaching <span>15M+ impressions</span> and <span>10M+ views</span> within the first weeks of launch.</li>
-                  <li class="scroll-animation work-bullet">Developed immersive experiences with <span>Three.js</span>, <span>8th Wall</span>, <span>React</span> and <span>Nuxt.js</span>,
-                    working closely with designers and 3D artists to optimize <span>real-time 3D
-                    performance</span> across mobile and web.</li>
+                  <li class="scroll-animation work-bullet">Created interactive <span>AR and web experiences</span> for major brands including <b>Dior</b>, <b>Disney</b>, <b>PNL</b> and <b>Steve Madden</b>, reaching <span>15M+ impressions</span> and <span>10M+ views</span> within the first weeks of launch.</li>
+                  <li class="scroll-animation work-bullet">Developed immersive experiences with <span>Three.js</span>, <span>8th Wall</span>, <span>React</span> and <span>Nuxt.js</span>, working closely with designers and 3D artists to optimize <span>real-time 3D  performance</span> across mobile and web.</li>
                 </ul>
               </div>
             </div>
