@@ -1,168 +1,146 @@
 <template>
   <Background :menu="false" :light="true" :opacity="0.8" color="#505050">
-    <div ref="page" class="relative page py-[5rem] px-[7rem] w-[210rem] h-[297rem] page flex flex-col justify-between items-stretch content-stretch justify-items-stretch bg-white">
-      <div class="pl-[3rem] pr-[12rem] flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch bg-white w-full h-auto">
-        <div class="flex flex-col justify-center items-center content-center justify-items-center w-full h-full space-y-[1rem]">
-          <div class="space-y-[1.7rem] flex flex-col justify-center items-center content-center justify-items-center w-full h-auto">
-            <h1 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[8rem] font-normal leading-none m-0">JÉRÉMIE <b>DUPAS</b></h1>
-            <h2 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-normal leading-none m-0"><b>Fullstack</b> developer + <b>Creative</b> developer</h2>
+    <div ref="page" class="relative page">
+      <div class="header-group">
+        <div class="header-content">
+          <div class="header-title-group">
+            <h1 class="scroll-animation header-title">JÉRÉMIE <b>DUPAS</b></h1>
+            <h2 class="scroll-animation header-subtitle"><b>Creative</b> Developer & <b>Frontend</b> Engineer</h2>
           </div>
-          <i class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0">Based in Amsterdam</i>
+          <i class="scroll-animation header-subinformation">React · Three.js · Interactive Experiences · TypeScript</i>
         </div>
-        <div class="flex flex-col justify-center items-center content-center justify-items-center min-w-[35rem] w-auto h-auto">
-          <img src="../assets/image/profile.jpg" class="size-[35rem] rounded-full"/>
+        <div class="header-image-group">
+          <img src="../assets/image/profile.jpg" class="header-image"/>
         </div>
       </div>
-      <div class="flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch bg-white w-full h-full space-x-[7rem]">
-        <div class="flex flex-col justify-between items-start content-start justify-items-end w-full h-full">
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[2rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">SUMMARY</h3>
-            <p class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[6rem] m-0">Creative full-stack developer with 6+ years of experience, blending technical precision with artistic curiosity. Strong foundation in frontend technologies, real-time 3D, and full-stack development. Passionate about crafting engaging, scalable tech experiences and exploring the edges of creative technology.</p>
+      <div class="content-group">
+        <div class="content-left">
+          <div class="category-group">
+            <h3 class="scroll-animation category-title">SUMMARY</h3>
+            <p class="scroll-animation category-summary">Creative Developer & Frontend Engineer with 7+ years building interactive web,
+              3D and real-time experiences for brands including <b>Dior</b>, <b>Barbie</b> and <b>Jameson</b>.
+              Specialized in <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> and <span>WebXR</span>, spanning creative
+              agencies, branded campaigns and industrial applications (including one
+              experience that reached 50M+ views). Focused on pairing strong engineering with creative technology to ship <span>pixel-perfect</span>, <span>real-time</span> experiences.
+            </p>
           </div>
-
-
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[2rem]">
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] leading-none m-0 uppercase font-bold">WORK EXPERIENCE</h3>
-              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Frontend Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">MX3D | Amsterdam, Netherlands</p>
+          <div class="category-group">
+            <h3 class="scroll-animation category-title">WORK EXPERIENCE</h3>
+            <div class="category-content">
+              <div class="work-group">
+                <div class="work-header">
+                  <div class="work-title-group">
+                    <strong class="scroll-animation work-title">Frontend Developer</strong>
+                    <p class="scroll-animation work-subtitle">MX3D | Amsterdam, Netherlands</p>
+                  </div>
+                  <i class="scroll-animation work-date">Sep 2025 - Sep 2026</i>
                 </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Sep 2025 - Present</i>
-              </div>
-              <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">
-                  Developed and maintained an Electron-based interface to monitor and control industrial metal 3D printing robots.
-                </li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">
-                  Built real-time visualization tools using React and Three.js for print process tracking and diagnostics.
-                </li>
-              </ul>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Fullstack Developer + Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Freelance | Amsterdam, Netherlands</p>
-                </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Nov 2024 - Sep 2025</i>
-              </div>
-              <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built a flexible face-swap web app (NuxtJS/NextJS, TailwindCSS) deployable as booth, web, or mobile view.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Integrated custom and third-party face-swap APIs (ConfUI, Replicate, Akool).</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Created a multilingual Garfield AR filter on Snapchat (11 languages).</li>
-              </ul>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">GoSpooky | Amsterdam, Netherlands</p>
-                </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Dec 2022 - Nov 2024</i>
-              </div>
-              <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built AR/VR experiences for Jameson, Barbie (50 million views), Creamfields using WebGL/A-Frame/WebXR/Three.js/8thwall, Lens Studio, Effect House, Spark AR.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Led R&D: heartbeat tracker (FFT), ML prototyping with PyTorch.</li>
-              </ul>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-row justify-between justify-items-start items-start content-start w-full">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Creative Developer</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Atomic Digital Design | Paris, France</p>
-                </div>
-                <i class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Oct 2019 - Nov 2022</i>
-              </div>
-              <ul>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Created highly successful branded AR/web experiences for clients like Dior (15M impressions), PNL (10M views in 1 week, sold-out tour tickets in <48 hours), Steve Madden (1.2k+ views in less than 3 weeks), utilizing Three.js, 8thWall, ReactJS, and NuxtJS.</li>
-                <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Optimized mobile/web 3D rendering with designers and 3D artists.</li>
-              </ul>
-            </div>
-          </div>
-          <div class="flex flex-col justify-between items-start content-start justify-items-start w-full h-auto  space-y-[2rem]">
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none m-0 uppercase">PERSONAL PROJECTS</h3>
-              <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Dupy</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Backend framework</p>
-                </div>
-                <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Built scalable backend framework (in Typescript) with REST/GraphQL support.</li>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Focused on validation, i18n, and automated documentation (TypeDoc).</li>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">
+                    Built <span>real-time 3D visualization</span> tools with <span>React</span> and <span>Three.js</span> to monitor and diagnose industrial metal 3D-printing processes.
+                  </li>
+                  <li class="scroll-animation work-bullet">
+                    Developed and maintained an <span>Electron</span> application for monitoring and controlling industrial metal 3D-printing robots.
+                  </li>
                 </ul>
               </div>
-            </div>
-            <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-              <div class="flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]">
-                <div class="flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem]">
-                  <strong class="scroll-animation font-bold whitespace-nowrap subpixel-antialiased text-[#505050] text-[4.7rem] leading-none">Liketoshare</strong>
-                  <p class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal">Social network</p>
+              <div class="work-group">
+                <div class="work-header">
+                  <div class="work-title-group">
+                    <strong class="scroll-animation work-title">Creative Developer & Frontend Engineer</strong>
+                    <p class="scroll-animation work-subtitle">Freelance | Amsterdam, Netherlands</p>
+                  </div>
+                  <i class="scroll-animation work-date">Nov 2024 - Sep 2025</i>
                 </div>
-                <ul>
-                  <li class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem]">Designed ephemeral content system with engagement-driven lifespan.</li>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">Created a multilingual <b>Garfield</b> <span>AR experience</span> for <span>Snapchat</span>, supporting 11 languages</li>
+                  <li class="scroll-animation work-bullet">Built a flexible face-swap web application with <span>Nuxt.js</span>, <span>Next.js</span> and <span>Tailwind CSS</span>, adapted for a photobooth/TV setup, a standalone web app, and an embedded <span>Flutter</span> application.</li>
+                  <li class="scroll-animation work-bullet">Integrated custom and third-party <span>AI image-generation APIs</span>, including <span>ComfyUI</span>, <span>Replicate</span> and <span>Akool</span>.</li>
+                </ul>
+              </div>
+              <div class="work-group">
+                <div class="work-header">
+                  <div class="work-title-group">
+                    <strong class="scroll-animation work-title">Creative Developer</strong>
+                    <p class="scroll-animation work-subtitle">GoSpooky | Amsterdam, Netherlands</p>
+                  </div>
+                  <i class="scroll-animation work-date">Dec 2022 - Nov 2024</i>
+                </div>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> AR experience that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span></li>
+                  <li class="scroll-animation work-bullet">Led creative R&D projects, including real-time heartbeat tracking using <span>FFT</span> and <span>machine-learning prototypes</span> built with <span>PyTorch</span>.
+                  </li>
+                </ul>
+              </div>
+              <div class="work-group">
+                <div class="work-header">
+                  <div class="work-title-group">
+                    <strong class="scroll-animation work-title">Creative Developer</strong>
+                    <p class="scroll-animation work-subtitle">Atomic Digital Design | Paris, France</p>
+                  </div>
+                  <i class="scroll-animation work-date">Oct 2019 - Nov 2022</i>
+                </div>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">Created interactive <span>AR and web experiences</span> for major brands including <b>Dior</b>, <b>PNL</b> and <b>Steve Madden</b>, reaching <span>15M+ impressions</span> and <span>10M+ views</span> within the first weeks of launch.</li>
+                  <li class="scroll-animation work-bullet">Developed immersive experiences with <span>Three.js</span>, <span>8th Wall</span>, <span>React</span> and <span>Nuxt.js</span>,
+                    working closely with designers and 3D artists to optimize <span>real-time 3D
+                    performance</span> across mobile and web.</li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
-        <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-full space-y-[5rem] pt-[8rem]">
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold whitespace-nowrap leading-none m-0 uppercase">Contact</h3>
-            <ul class="list-none space-y-[1rem]">
-              <li class="scroll-animation leading-none align-middle whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:call-sharp.svg"/> +33 6 67 05 17 64</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/material-symbols:location-on-rounded.svg"/>Amsterdam, Netherlands</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/ic:outline-mail.svg"/>dupasj97@gmail.com</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/devicon-plain:linkedin.svg"/><a href="https://linkedin.com/in/jeremie-dupas">linkedin.com/in/jeremie-dupas</a></li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] min-h-[5rem] relative flex justify-start items-center content-center"><img class="image" src="https://api.iconify.design/tabler:world.svg"/><a href="https://portfolio-y71.pages.dev">portfolio-y71.pages.dev</a></li>
+        <div class="content-right">
+          <div class="category-group">
+            <h3 class="scroll-animation category-title">CONTACT</h3>
+            <ul class="list">
+              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/material-symbols:call-sharp.svg"/> +33 6 67 05 17 64</li>
+              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/material-symbols:location-on-rounded.svg"/>Amsterdam, Netherlands</li>
+              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/ic:outline-mail.svg"/>dupasj97@gmail.com</li>
+              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/devicon-plain:linkedin.svg"/><a href="https://linkedin.com/in/jeremie-dupas">linkedin.com/in/jeremie-dupas</a></li>
+              <li class="scroll-animation work-bullet"><img class="bullet-image" src="https://api.iconify.design/tabler:world.svg"/><a href="https://portfolio-y71.pages.dev">portfolio-y71.pages.dev</a></li>
             </ul>
           </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Education</h3>
-            <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
-              <strong class="scroll-animation font-bold subpixel-antialiased text-[#505050] text-[4.2rem] leading-none">Master’s in Web & Mobile Engineering</strong>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[4rem] leading-none">September 2016 - June 2021</p>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[3.2rem] font-light leading-none">Paris, France</p>
-              <p class="scroll-animation subpixel-antialiased text-[#505050] text-[3.7rem] font-light leading-none">IIM – Institute of Internet and Multimedia</p>
-            </div>
-          </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none whitespace-nowrap m-0 uppercase">SKILLS</h3>
-            <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-              <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
-                <h4 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Hard skills</h4>
-                <ul class="space-y-0">
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">VueJS / NuxtJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">NodeJS / TypeScript</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">8thWall / WebXR</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">ReactJS / NextJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">WebGL / ThreeJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">SQL / NoSQL</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">AmmoJS</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Postgres / PostGis</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Git / CI</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Electron</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">HTML/CSS/JS</li>
+          <div class="category-group">
+            <h3 class="scroll-animation category-title">SKILLS</h3>
+            <div class="category-content">
+              <div class="subcategory-group">
+                <h4 class="scroll-animation subcategory-title">Frontend</h4>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">VueJS / NuxtJS</li>
+                  <li class="scroll-animation work-bullet">NodeJS / TypeScript</li>
+                  <li class="scroll-animation work-bullet">8thWall / WebXR</li>
+                  <li class="scroll-animation work-bullet">ReactJS / NextJS</li>
+                  <li class="scroll-animation work-bullet">WebGL / Three.js</li>
+                  <li class="scroll-animation work-bullet">HTML/CSS/JS</li>
                 </ul>
               </div>
-              <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem]">
-                <h4 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Soft skills</h4>
-                <ul>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Problem solving</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Volunteer minded</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Curious</li>
-                  <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">Adaptation</li>
+              <div class="subcategory-group">
+                <h4 class="scroll-animation subcategory-title">Creative Technology</h4>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">Three.js / WebGL</li>
+                  <li class="scroll-animation work-bullet">WebXR / 8th Wall</li>
+                  <li class="scroll-animation work-bullet">Lens Studio</li>
+                  <li class="scroll-animation work-bullet">A-Frame</li>
+                  <li class="scroll-animation work-bullet">Electron</li>
+                </ul>
+              </div>
+              <div class="subcategory-group">
+                <h4 class="scroll-animation subcategory-title">Backend & Tools</h4>
+                <ul class="list">
+                  <li class="scroll-animation work-bullet">REST / GraphQL</li>
+                  <li class="scroll-animation work-bullet">PostgreSQL / PostGIS</li>
+                  <li class="scroll-animation work-bullet">SQL / NoSQL</li>
+                  <li class="scroll-animation work-bullet">Git / CI</li>
                 </ul>
               </div>
             </div>
           </div>
-          <div class="flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[3rem]">
-            <h3 class="scroll-animation w-full h-auto subpixel-antialiased text-[#505050] text-[7rem] font-bold leading-none whitespace-nowrap m-0 uppercase">Language</h3>
-            <ul>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">French</li>
-              <li class="scroll-animation whitespace-nowrap subpixel-antialiased text-[#505050] text-[3.7rem]">English</li>
+          <div class="category-group">
+            <h3 class="scroll-animation category-title">Language</h3>
+            <ul class="list">
+              <li class="scroll-animation work-bullet">French — Native</li>
+              <li class="scroll-animation work-bullet">English — Fluent</li>
             </ul>
           </div>
         </div>
@@ -198,10 +176,7 @@
    box-shadow: 0 0 5rem rgba(0, 0, 0, 0.2);
    max-width: 100%;
    margin: 10rem 0 20rem 0;
-
-   p{
-     margin-bottom: 0;
-   }
+   @apply py-[5rem] px-[7rem] w-[210rem] h-[297rem] flex flex-col justify-between items-stretch content-stretch justify-items-stretch bg-white;
  }
 
  body{
@@ -212,46 +187,10 @@
  html{
    font-size: min(3.75px,0.45vw);
    height: 100%;
-   &.pdf-mode{
-     font-size: 3.6px;
-    .page{
-      margin: 0;
-      overflow: hidden;
-    }
-   }
  }
 
  @page {
    margin: 0;
- }
-
-
- ul li  .image{
-   @apply absolute right-full top-1/2 -translate-x-[2rem] -translate-y-1/2 size-[5rem] -mt-[0.6rem];
- }
-ul:not(.list-none){
-  padding-left: 0;
-  list-style: none;
-
-  li{
-    padding-left: 4rem;
-    position: relative;
-
-    &:before{
-      position: absolute;
-      left:1rem;
-      top:2.1rem;
-      background-color: #505050;
-      content: ' ';
-      width: 1.2rem;
-      height: 1.2rem;
-      border-radius: 99px;
-      print-color-adjust: exact;
-    }
-  }
-}
- ul.list-none{
-   padding-left: 6.5rem;
  }
 
 @media print {
@@ -273,19 +212,128 @@ ul:not(.list-none){
 }
 
 
+.work-group{
+ @apply flex flex-col justify-start justify-items-start items-stretch content-stretch w-full space-y-[2rem]
+}
+.work-header{
+  @apply flex flex-row justify-between justify-items-start items-start content-start w-full;
+}
+.work-title-group{
+ @apply flex flex-col justify-start justify-items-start items-stretch content-start w-full space-y-[1rem];
+}
+.work-title{
+  @apply font-semibold whitespace-nowrap subpixel-antialiased text-[#1a1a1a] text-[4rem] leading-none;
+}
+.work-subtitle{
+ @apply whitespace-nowrap subpixel-antialiased text-[#505050] text-[4rem] leading-none font-normal;
+}
+.work-date{
+ @apply whitespace-nowrap subpixel-antialiased text-[#505050] text-[3rem] leading-none font-normal;
+}
 
+.list{
+  @apply list-none pl-0 space-y-[0.5rem];
+}
+.work-bullet{
+  &:not(:has(.bullet-image)){
+    @apply subpixel-antialiased text-[#505050] pl-[4rem] relative;
 
+    &:before{
+      position: absolute;
+      left:1rem;
+      top:2.1rem;
+      background-color: #505050;
+      content: ' ';
+      width: 1.2rem;
+      height: 1.2rem;
+      border-radius: 99px;
+      print-color-adjust: exact;
+    }
+  }
+  &:has(.bullet-image){
+    @apply whitespace-nowrap subpixel-antialiased text-[#505050] relative flex justify-start items-center content-center min-h-[5rem];
+    &:not(:first-child){
+      @apply mt-[1rem];
+    }
+  }
+
+  .bullet-image{
+    @apply pr-[1rem];
+  }
+
+  @apply text-[3.9rem];
+  &:has(a){
+    @apply  text-[3rem];
+  }
+}
+
+.content-left{
+  @apply flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[7rem] pt-[5rem];
+  span{
+    @apply brightness-50 font-medium;
+  }
+}
+ .content-right{
+   @apply flex flex-col justify-start items-start content-start justify-items-start w-auto h-full space-y-[5rem] pt-[5rem] pr-[1rem];
+ }
+.content-group{
+  @apply flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch  w-full h-full space-x-[7rem];
+}
+
+.category-group{
+  @apply flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[3rem];
+}
+.category-title{
+  @apply w-full h-auto subpixel-antialiased text-[#1a1a1a] text-[5.5rem] leading-none m-0 pb-[1rem] uppercase font-medium border-b;
+}
+.category-content{
+  @apply flex flex-col justify-start items-start content-start justify-items-start w-full h-auto space-y-[7rem];
+  @apply subpixel-antialiased text-[#505050] text-[3.7rem] font-normal leading-[5.2rem];
+}
+ .category-summary{
+   @apply subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-[5.2rem];
+ }
+
+ .header-title-group{
+   @apply flex flex-col justify-center items-center content-center justify-items-center w-full h-auto;
+ }
+ .header-group{
+   @apply pl-[3rem] pr-[7rem] flex flex-row justify-stretch items-stretch content-stretch justify-items-stretch w-full h-auto;
+ }
+ .header-content{
+   @apply flex flex-col justify-center items-center content-center justify-items-center w-full h-full space-y-[2rem];
+ }
+
+ .header-image-group{
+   @apply flex flex-col justify-center items-center content-center justify-items-center min-w-[30rem] w-auto h-auto;
+ }
+ .header-image{
+   @apply size-[30rem] rounded-full;
+ }
+ .header-title{
+   @apply w-full h-auto subpixel-antialiased text-[#1A1A1A] text-[8rem] font-normal leading-none m-0;
+ }
+ .header-subtitle{
+   @apply w-full h-auto subpixel-antialiased text-[#1A1A1A] text-[7rem] font-normal leading-none m-0;
+ }
+ .header-subinformation{
+   @apply w-full h-auto subpixel-antialiased text-[#505050] text-[4rem] font-normal leading-none m-0;
+ }
+
+ .subcategory-title{
+   @apply  w-full h-auto subpixel-antialiased text-[#1a1a1a] text-[4rem] font-semibold leading-none whitespace-nowrap m-0 uppercase;
+ }
+ .subcategory-group{
+   @apply flex flex-col justify-start items-start content-start justify-items-start w-auto h-auto space-y-[1rem];
+ }
  </style>
 
  <script setup>
- import html2pdf from "html2pdf.js";
  import QRCodeStyling from "qr-code-styling";
  import ResumePreviewUrl from "../assets/image/resume-preview.jpg";
 
  const page = ref();
-
  const referrer = ref(null)
- const router = useRouter()
 
  const print = () => {
    window.print()
@@ -369,34 +417,6 @@ ul:not(.list-none){
      },
    ],
  })
-
-
-
- const pdf = async () => {
-
-   document.documentElement.classList.add('pdf-mode')
-
-   const size = page.value.getBoundingClientRect();
-
-   await html2pdf()
-       .set({
-         margin: 0,
-         enableLinks: true,
-         filename: '[RESUME] DUPAS Jeremie.pdf',
-         html2canvas: {
-           width: size.width,
-           height: size.height,
-           scale: 5,
-           removeContainer: false,
-           useCORS: true
-         },
-         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait',compress: true }
-       })
-       .from(page.value)
-       .save();
-   document.documentElement.classList.remove('pdf-mode')
- }
-
  const qrRef = ref(null)
 
  onMounted(() => {

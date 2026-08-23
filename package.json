@@ -17,7 +17,6 @@
     "@nuxtjs/prismic": "^3.4.1",
     "d3-ease": "^3.0.1",
     "html2canvas": "file:./html2canvas-1.4.1.tgz",
-    "html2pdf.js": "^0.10.1",
     "lottie-web": "^5.12.2",
     "nuxt": "^3.16.2",
     "pdf-lib": "^1.17.1",
