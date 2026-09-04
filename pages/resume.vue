@@ -53,7 +53,7 @@
                   <i class="scroll-animation work-date">Nov 2024 - Sep 2025</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Created a multilingual <b>Garfield</b> <span>AR experience</span> for <span>Snapchat</span>, supporting 11 languages</li>
+                  <li class="scroll-animation work-bullet">Created a multilingual <b>Garfield</b> <span>AR experience</span> for <span>Snapchat</span>, supporting 11 languages.</li>
                   <li class="scroll-animation work-bullet">Built a <span>cross-platform web application</span> with <span>Nuxt.js</span>, <span>Next.js</span> and <span>Tailwind CSS</span>, adapted for a photobooth/TV setup, a standalone web app, and an embedded <span>Flutter</span> application.</li>
                   <li class="scroll-animation work-bullet">Integrated custom and third-party <span>AI image-generation APIs</span>, including <span>ComfyUI</span>, <span>Replicate</span> and <span>Akool</span>.</li>
                 </ul>
@@ -67,7 +67,7 @@
                   <i class="scroll-animation work-date">Dec 2022 - Nov 2024</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> <span>AR experience</span> that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span></li>
+                  <li class="scroll-animation work-bullet">Built a <b>Barbie</b> <span>AR experience</span> that <b>reached 50M+ views</b>, part of a broader slate of interactive <span>AR/VR</span> campaigns for brands including <b>Jameson</b> and <b>Creamfields</b>, using <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> and <span>Lens Studio</span> (Javascript/ES3).</li>
                   <li class="scroll-animation work-bullet">Led <span>creative R&D projects</span>, including real-time heartbeat tracking using <span>FFT</span> and <span>machine-learning prototypes</span> built with <span>PyTorch</span>.
                   </li>
                 </ul>
