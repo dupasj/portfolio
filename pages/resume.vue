@@ -17,7 +17,7 @@
         <div class="content-left">
           <div class="category-group">
             <h3 class="scroll-animation category-title">PROFIL</h3>
-            <p class="scroll-animation category-summary">Développeur Créatif & Ingénieur Frontend avec plus de 7 ans d'expérience dans la création d'<span>expériences web</span>, d'<span>expériences 3D et temps réel</span> pour des marques telles que <b>Dior</b>, <b>Barbie</b> et <b>Jameson</b>. Spécialisé en <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> et <span>WebXR</span>, avec une expérience en agences créatives, <span>campagnes de marque</span> et <span>applications industrielles</span>. Passionné par l'alliance d'une ingénierie solide et de la technologie créative pour concevoir des expériences temps réel <span>abouties</span> et <span>engageantes</span>.</p>
+            <p class="scroll-animation category-summary">Développeur Créatif & Ingénieur Frontend avec plus de 7 ans d'expérience dans la création d'<span>expériences web</span>, d'<span>expériences 3D et temps réel</span> pour des marques telles que <b>Dior</b>, <b>Barbie</b> et <b>Jameson</b>. Spécialisé en <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> et <span>WebXR</span>, avec une expérience en agences créatives, <span>campagnes de marque</span> et <span>applications industrielles</span>. Passionné par l'alliance d'une ingénierie solide et créative pour concevoir des expériences <span>abouties</span> et <span>engageantes</span>.</p>
           </div>
           <div class="category-group">
             <h3 class="scroll-animation category-title">EXPÉRIENCE</h3>
@@ -49,7 +49,7 @@
                 </div>
                 <ul class="list">
                   <li class="scroll-animation work-bullet">Création d'une <span>expérience AR multilingue</span> <b>Garfield</b> pour <span>Snapchat</span>, disponible en 11 langues.</li>
-                  <li class="scroll-animation work-bullet">Développement d'une <span>application web</span> de face-swap cross-platforme avec <span>Nuxt.js</span>, <span>Next.js</span> et <span>Tailwind CSS</span>, adaptée à un photobooth/TV, une application web ou l'intégration au sein d'une application <span>Flutter</span>.</li>
+                  <li class="scroll-animation work-bullet">Développement d'une <span>application web</span> de face-swap cross-platforme avec <span>Nuxt.js</span>, <span>Next.js</span> et <span>Tailwind CSS</span>, adaptée pour photobooth/TV, au web ou pour l'intégration au sein d'une application <span>Flutter</span>.</li>
                   <li class="scroll-animation work-bullet">Intégration d'API de <span>génération d'images IA personnalisées</span> comme <span>ComfyUI</span>, <span>Replicate</span> ou <span>Akool</span>.</li>
                 </ul>
               </div>
