@@ -62,7 +62,7 @@
                   <i class="scroll-animation work-date">Dec 2022 - Nov 2024</i>
                 </div>
                 <ul class="list">
-                  <li class="scroll-animation work-bullet">Création d'une expérience AR <b>Barbie</b> ayant atteint <b>50M+ de vues</b>, dans le cadre de <span>campagnes AR/VR interactives</span> pour des marques telles que <b>Jameson</b> et <b>Creamfields</b>, avec <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> et <span>Lens Studio</span>.</li>
+                  <li class="scroll-animation work-bullet">Création d'une expérience AR <b>Barbie</b> ayant atteint <b>50M+ de vues</b>, dans le cadre de <span>campagnes AR/VR interactives</span> pour des marques telles que <b>Jameson</b> et <b>Creamfields</b>, avec <span>WebGL</span>, <span>Three.js</span>, <span>WebXR</span>, <span>8th Wall</span> et <span>Lens Studio</span> (Javascript/ES3).</li>
                   <li class="scroll-animation work-bullet">Direction de <span>projets R&D créatifs</span>, incluant un système de détection du rythme cardiaque en temps réel via <span>FFT</span> et des prototypes de <span>machine learning</span> développés avec <span>PyTorch</span>.</li>
                 </ul>
               </div>
