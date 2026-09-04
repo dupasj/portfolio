@@ -20,8 +20,7 @@
             <p class="scroll-animation category-summary">Creative Developer & Frontend Engineer with 7+ years building interactive web,
               3D and real-time experiences for brands including <b>Dior</b>, <b>Barbie</b> and <b>Jameson</b>.
               Specialized in <span>React</span>, <span>TypeScript</span>, <span>Three.js</span>, <span>WebGL</span> and <span>WebXR</span>, spanning creative
-              agencies, branded campaigns and industrial applications (including one
-              experience that reached 50M+ views). Focused on pairing strong engineering with creative technology to ship <span>pixel-perfect</span>, <span>real-time</span> experiences.
+              agencies, branded campaigns and industrial applications. Focused on pairing strong engineering with creative technology to ship <span>pixel-perfect</span>, <span>real-time</span> experiences.
             </p>
           </div>
           <div class="category-group">
